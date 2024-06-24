@@ -41,6 +41,21 @@ void NekMeshObject::process(){
 
     }
 }
+
+void NekMeshObject::addProcessModule(map<string, string>values){
+    ModuleKey process_module;
+    process_module.first=eProcessModule;
+    process_module.second="peralign";
+    ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+    modp->SetLogger(log);
+    modules.push_back(modp);
+    modp->RegisterConfig("surf1", values["surf1"]);
+    modp->RegisterConfig("surf2", values["surf2"]);
+    modp->RegisterConfig("dir", values["dir"]);
+    // Ensure configuration options have been set.
+    modp->SetDefaults();
+}
+
 void NekMeshObject::addInputModule(string inputFile){
     ModuleKey in_module;
     in_module.first=eInputModule;
@@ -62,14 +77,15 @@ void NekMeshObject::addInputModule(string inputFile){
     modules.push_back(mod);
 }
 
-void NekMeshObject::addOutputFile(string filePath){
+void NekMeshObject::addOutputFile(string filePath, string fileType){
     ModuleKey out_module;
     out_module.first=eOutputModule;
-    out_module.second="xml";
+    out_module.second=fileType;
     ModuleSharedPtr mod1 = GetModuleFactory().CreateInstance(out_module, mesh);
     mod1->SetLogger(log);
     modules.push_back(mod1);
-    mod1->RegisterConfig("outfile", "/Users/shihan/Desktop/ADR_mesh.xml");
+    string fileName = "/Users/shihan/Desktop/output."+fileType;
+    mod1->RegisterConfig("outfile", fileName);
     // Ensure configuration options have been set.
     mod1->SetDefaults();
 }

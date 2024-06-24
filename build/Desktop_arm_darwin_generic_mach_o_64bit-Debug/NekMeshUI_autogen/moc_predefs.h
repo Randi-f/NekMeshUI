@@ -10,6 +10,8 @@
 #define OCC_CONVERT_SIGNALS 1
 #define QT_CORE_LIB 1
 #define QT_GUI_LIB 1
+#define QT_OPENGLWIDGETS_LIB 1
+#define QT_OPENGL_LIB 1
 #define QT_WIDGETS_LIB 1
 #define SIZEOF_DPTR (sizeof(void*))
 #define TETGEN_HAS_DEINITIALIZE 1

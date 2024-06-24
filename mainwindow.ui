@@ -19,16 +19,16 @@
      <rect>
       <x>20</x>
       <y>10</y>
-      <width>431</width>
-      <height>171</height>
+      <width>271</width>
+      <height>111</height>
      </rect>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_addModule">
     <property name="geometry">
      <rect>
-      <x>150</x>
-      <y>190</y>
+      <x>190</x>
+      <y>120</y>
       <width>100</width>
       <height>32</height>
      </rect>
@@ -40,27 +40,60 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>560</x>
-      <y>30</y>
+      <x>310</x>
+      <y>310</y>
       <width>111</width>
-      <height>61</height>
+      <height>21</height>
      </rect>
     </property>
     <property name="text">
-     <string>TextLabel</string>
+     <string>NekMesh</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btn_run">
     <property name="geometry">
      <rect>
-      <x>80</x>
-      <y>270</y>
-      <width>241</width>
+      <x>190</x>
+      <y>150</y>
+      <width>101</width>
       <height>32</height>
      </rect>
     </property>
     <property name="text">
-     <string>run (auto add output module)</string>
+     <string>run</string>
+    </property>
+   </widget>
+   <widget class="QTableView" name="tableView">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>180</y>
+      <width>271</width>
+      <height>111</height>
+     </rect>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_save">
+    <property name="geometry">
+     <rect>
+      <x>190</x>
+      <y>290</y>
+      <width>100</width>
+      <height>32</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>save</string>
+    </property>
+   </widget>
+   <widget class="QGraphicsView" name="graphicsView">
+    <property name="geometry">
+     <rect>
+      <x>390</x>
+      <y>10</y>
+      <width>256</width>
+      <height>192</height>
+     </rect>
     </property>
    </widget>
   </widget>
@@ -73,6 +106,12 @@
      <height>24</height>
     </rect>
    </property>
+   <widget class="QMenu" name="menuNekMesh">
+    <property name="title">
+     <string>NekMesh</string>
+    </property>
+   </widget>
+   <addaction name="menuNekMesh"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>

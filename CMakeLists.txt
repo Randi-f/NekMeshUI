@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS Widgets)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Widgets)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets Gui Widgets OpenGL)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets Gui Widgets OpenGL)
 
 # Find Nektar++
 FIND_PACKAGE(Nektar++ REQUIRED)
@@ -33,6 +33,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         ${PROJECT_SOURCES}
         NekMeshObject.cpp
         NekMeshObject.h
+        SelectionDialog.h
+        MeshRenderer.h
+        outputdialog.h outputdialog.cpp outputdialog.ui
+        glwidget.h
+        glwidget.cpp
+
     )
 # Define target properties for Android with Qt 6 as:
 #    set_property(TARGET NekMeshUI APPEND PROPERTY QT_ANDROID_PACKAGE_SOURCE_DIR
@@ -52,7 +58,14 @@ else()
     endif()
 endif()
 
-target_link_libraries(NekMeshUI PRIVATE Qt${QT_VERSION_MAJOR}::Widgets ${NEKTAR++_LIBRARIES} ${NEKTAR++_TP_LIBRARIES})
+
+target_link_libraries(NekMeshUI PRIVATE
+    Qt${QT_VERSION_MAJOR}::OpenGLWidgets
+    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Widgets
+    Qt${QT_VERSION_MAJOR}::OpenGL
+    ${NEKTAR++_LIBRARIES}
+    ${NEKTAR++_TP_LIBRARIES})
 # 链接库文件
 
 
