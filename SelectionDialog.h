@@ -13,20 +13,22 @@ public:
 
         QVBoxLayout *layout = new QVBoxLayout(this);
 
-        // 创建三个按钮
-        QPushButton *button1 = new QPushButton("peralign", this);
-        QPushButton *button2 = new QPushButton("output", this);
-        QPushButton *button3 = new QPushButton("选项3", this);
 
-        // 将按钮添加到布局中
-        layout->addWidget(button1);
-        layout->addWidget(button2);
-        layout->addWidget(button3);
+        // Create a QString list
+        QStringList buttonLabels = {"input", "CAD", "loadoctree", "peralign",
+                                    "2dgenerator", "hosurface", "bl",
+                                    "volumemesh", "output"};
 
-        // 连接按钮点击信号到槽函数
-        connect(button1, &QPushButton::clicked, this, &SelectionDialog::onButtonClicked);
-        connect(button2, &QPushButton::clicked, this, &SelectionDialog::onButtonClicked);
-        connect(button3, &QPushButton::clicked, this, &SelectionDialog::onButtonClicked);
+        // Iterate over the QString list and create buttons
+        for (const QString &label : buttonLabels) {
+            QPushButton *button = new QPushButton(label, this);
+            layout->addWidget(button);
+            connect(button, &QPushButton::clicked, this, &SelectionDialog::onButtonClicked);
+        }
+
+        // Set the layout to the widget
+        this->setLayout(layout);
+
     }
     QString getSelectedOption() const {
         return selectedOption;

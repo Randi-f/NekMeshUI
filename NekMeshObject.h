@@ -21,11 +21,12 @@ public:
     NekMeshObject(){
         auto logOutput = std::make_shared<StreamOutput>(std::cout);
         log=Logger(logOutput, INFO);
+
     }
     ~NekMeshObject(){
     }
     void addInputModule(string inputFile);
-    void addOutputFile(string filePath, string fileType);
+    void addOutputModule(string filePath, string fileType);
     void addProcessModule(map<string, string>values);
     void process();
 

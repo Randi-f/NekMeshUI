@@ -1,7 +1,10 @@
 file(REMOVE_RECURSE
   "CMakeFiles/NekMeshUI_autogen"
   "NekMeshUI_autogen/include/ui_mainwindow.h"
+  "NekMeshUI_autogen/include/ui_optionswindow.h"
   "NekMeshUI_autogen/include/ui_outputdialog.h"
+  "NekMeshUI_autogen/include/ui_parameterform.h"
+  "NekMeshUI_autogen/include/ui_sourcewindow.h"
   "NekMeshUI_autogen/mocs_compilation.cpp"
   "NekMeshUI_autogen/timestamp"
 )

@@ -15,6 +15,8 @@
 
 #include <NekMesh/Module/Module.h>
 
+#include <QDebug>
+
 using namespace std;
 using namespace Nektar::NekMesh;
 
@@ -45,15 +47,124 @@ void NekMeshObject::process(){
 void NekMeshObject::addProcessModule(map<string, string>values){
     ModuleKey process_module;
     process_module.first=eProcessModule;
-    process_module.second="peralign";
-    ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-    modp->SetLogger(log);
-    modules.push_back(modp);
-    modp->RegisterConfig("surf1", values["surf1"]);
-    modp->RegisterConfig("surf2", values["surf2"]);
-    modp->RegisterConfig("dir", values["dir"]);
-    // Ensure configuration options have been set.
-    modp->SetDefaults();
+    if(values["moduleType"]=="peralign"){
+        process_module.second="peralign";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        modp->RegisterConfig("surf1", values["surf1"]);
+        modp->RegisterConfig("surf2", values["surf2"]);
+        modp->RegisterConfig("dir", values["dir"]);
+        // Ensure configuration options have been set.
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="loadcad"){
+        // MCF configuration
+        mesh->m_expDim   = 3;
+        mesh->m_spaceDim = 3;
+        mesh->m_nummode  = 5;
+
+        process_module.second="loadcad";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        modp->RegisterConfig("filename", values["filename"]);
+        modp->RegisterConfig("voidpoints", values["voidpoints"]);
+        if(values["2D"]=="true"){
+            modp->RegisterConfig("2D", "");
+        }
+        if(values["NACA"]!="false"){
+            modp->RegisterConfig("NACA", values["NACA"]);
+        }
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="loadoctree"){
+        process_module.second="loadoctree";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        modp->RegisterConfig("mindel", values["MinDelta"]);
+        modp->RegisterConfig("maxdel", values["MaxDelta"]);
+        modp->RegisterConfig("eps", values["EPS"]);
+        if(values["refinement"]!="false"){
+            modp->RegisterConfig("refinement", values["refinement"]);
+        }
+        if(values["curve_refinement"]=="true"){
+            modp->RegisterConfig("curve_refinement", "");
+        }
+        if(values["writeoctree"]=="true"){
+            modp->RegisterConfig("writeoctree", "");
+        }
+
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="2dgenerator"){
+        process_module.second="2dgenerator";
+        mesh->m_expDim   = 2;
+        mesh->m_spaceDim = 2;
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+
+        if(values["makeBL"]!="false"){
+            modp->RegisterConfig("blcurves", values["blcurves"]);
+            modp->RegisterConfig("blthick", values["blthick"]);
+            if(values["adjust"]=="true"){
+                modp->RegisterConfig("bltadjust", "todo");
+                if (values["adjustall"]=="true")
+                {
+                    modp->RegisterConfig("adjustblteverywhere", "");
+                }
+            }
+        }
+
+        // Ensure configuration options have been set.
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="volumemesh"){
+        process_module.second="volumemesh";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        if(values["makeBL"]=="true"){
+            modp->RegisterConfig("blsurfs", values["blsurfs"]);
+            modp->RegisterConfig("blthick", values["blthick"]);
+            modp->RegisterConfig("bllayers", values["bllayers"]);
+            modp->RegisterConfig("blprog", values["blprog"]);
+        }
+
+        // Ensure configuration options have been set.
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="hosurface"){
+        process_module.second="hosurface";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        if(values["surfopti"]=="true"){
+            modp->RegisterConfig("no_opti", "");
+        }
+
+        // Ensure configuration options have been set.
+        modp->SetDefaults();
+    }
+    else if(values["moduleType"]=="bl"){
+        process_module.second="bl";
+        ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
+        modp->SetLogger(log);
+        modules.push_back(modp);
+        modp->RegisterConfig("layers", values["bllayers"]);
+        modp->RegisterConfig("surf", values["blsurfs"]);
+        mesh->m_nummode  = boost::lexical_cast<int>(values["order"]) + 1;
+        modp->RegisterConfig("nq", boost::lexical_cast<string>(mesh->m_nummode));
+        modp->RegisterConfig("r", values["blprog"]);
+
+
+
+        // Ensure configuration options have been set.
+        modp->SetDefaults();
+    }
+
 }
 
 void NekMeshObject::addInputModule(string inputFile){
@@ -77,7 +188,7 @@ void NekMeshObject::addInputModule(string inputFile){
     modules.push_back(mod);
 }
 
-void NekMeshObject::addOutputFile(string filePath, string fileType){
+void NekMeshObject::addOutputModule(string filePath, string fileType){
     ModuleKey out_module;
     out_module.first=eOutputModule;
     out_module.second=fileType;

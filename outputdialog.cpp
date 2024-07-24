@@ -7,6 +7,10 @@ OutputDialog::OutputDialog(QWidget *parent)
 {
     ui->setupUi(this);
     connect(ui->pushButton, &QPushButton::clicked, this, &OutputDialog::onButtonClicked);
+    connect(ui->pushButton_2, &QPushButton::clicked, this, &OutputDialog::onButtonClicked);
+    connect(ui->pushButton_3, &QPushButton::clicked, this, &OutputDialog::onButtonClicked);
+    connect(ui->pushButton_4, &QPushButton::clicked, this, &OutputDialog::onButtonClicked);
+    connect(ui->pushButton_5, &QPushButton::clicked, this, &OutputDialog::onButtonClicked);
 }
 
 OutputDialog::~OutputDialog()

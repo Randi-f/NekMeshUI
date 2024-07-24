@@ -1058,6 +1058,11 @@ CMakeFiles/NekMeshUI.dir/main.cpp.o: \
   /opt/homebrew/lib/QtGui.framework/Headers/QStandardItemModel \
   /opt/homebrew/lib/QtGui.framework/Headers/qstandarditemmodel.h \
   /opt/homebrew/include/QtCore/qabstractitemmodel.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+  /opt/homebrew/include/QtWidgets/qabstractbutton.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/NekMeshObject.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/LibUtilities/BasicConst/GitRevision.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/LibUtilities/LibUtilitiesDeclspec.h \
@@ -2153,43 +2158,13 @@ CMakeFiles/NekMeshUI.dir/main.cpp.o: \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADSurf.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADSystem.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADVert.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
-  /opt/homebrew/include/QtWidgets/qabstractbutton.h \
-  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/MeshRenderer.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
-  /opt/homebrew/include/QtCore/qcoreapplication.h \
-  /opt/homebrew/include/QtCore/qcoreevent.h \
-  /opt/homebrew/include/QtCore/qeventloop.h \
-  /opt/homebrew/include/QtCore/qnativeinterface.h \
-  /opt/homebrew/include/QtCore/qcoreapplication_platform.h \
-  /opt/homebrew/include/QtGui/qguiapplication.h \
-  /opt/homebrew/include/QtGui/qinputmethod.h \
-  /opt/homebrew/include/QtCore/qlocale.h \
-  /opt/homebrew/include/QtGui/qguiapplication_platform.h \
-  /opt/homebrew/lib/QtCore.framework/Headers/QFile \
-  /opt/homebrew/lib/QtCore.framework/Headers/qfile.h \
-  /opt/homebrew/include/QtCore/qfiledevice.h \
-  /opt/homebrew/include/QtCore/qiodevice.h \
-  /opt/homebrew/lib/QtCore.framework/Headers/QXmlStreamReader \
-  /opt/homebrew/lib/QtCore.framework/Headers/qxmlstream.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
-  /opt/homebrew/lib/QtGui.framework/Headers/QPainter \
-  /opt/homebrew/lib/QtGui.framework/Headers/qpainter.h \
-  /opt/homebrew/include/QtGui/qtextoption.h \
-  /opt/homebrew/include/QtGui/qpen.h \
-  /opt/homebrew/lib/QtCore.framework/Headers/QDebug \
-  /opt/homebrew/lib/QtCore.framework/Headers/qdebug.h \
-  /opt/homebrew/lib/QtCore.framework/Headers/QString \
-  /opt/homebrew/lib/QtCore.framework/Headers/qstring.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/glwidget.h \
   /opt/homebrew/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
   /opt/homebrew/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
   /opt/homebrew/include/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
   /opt/homebrew/include/QtOpenGLWidgets/qtopenglwidgetsexports.h \
   /opt/homebrew/include/QtWidgets/QWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
   /opt/homebrew/include/QtGui/QSurfaceFormat \
   /opt/homebrew/lib/QtGui.framework/Headers/qsurfaceformat.h \
   /opt/homebrew/include/QtGui/qopengl.h \
@@ -2205,6 +2180,7 @@ CMakeFiles/NekMeshUI.dir/main.cpp.o: \
   /opt/homebrew/lib/QtGui.framework/Headers/QOpenGLFunctions \
   /opt/homebrew/lib/QtGui.framework/Headers/qopenglfunctions.h \
   /opt/homebrew/include/QtGui/qopenglcontext.h \
+  /opt/homebrew/include/QtCore/qnativeinterface.h \
   /opt/homebrew/include/QtGui/qopenglcontext_platform.h \
   /opt/homebrew/lib/QtGui.framework/Headers/QMatrix4x4 \
   /opt/homebrew/lib/QtGui.framework/Headers/qmatrix4x4.h \
@@ -2214,4 +2190,40 @@ CMakeFiles/NekMeshUI.dir/main.cpp.o: \
   /opt/homebrew/include/QtGui/qquaternion.h \
   /opt/homebrew/include/QtGui/qgenericmatrix.h \
   /opt/homebrew/lib/QtCore.framework/Headers/QBasicTimer \
-  /opt/homebrew/lib/QtCore.framework/Headers/qbasictimer.h
+  /opt/homebrew/lib/QtCore.framework/Headers/qbasictimer.h \
+  /opt/homebrew/lib/QtGui.framework/Headers/QWheelEvent \
+  /opt/homebrew/lib/QtGui.framework/Headers/qevent.h \
+  /opt/homebrew/include/QtCore/qcoreevent.h \
+  /opt/homebrew/include/QtCore/qiodevice.h \
+  /opt/homebrew/include/QtCore/qpointer.h \
+  /opt/homebrew/include/QtCore/qurl.h \
+  /opt/homebrew/include/QtGui/qeventpoint.h \
+  /opt/homebrew/include/QtGui/qvector2d.h \
+  /opt/homebrew/include/QtGui/qpointingdevice.h \
+  /opt/homebrew/include/QtGui/qinputdevice.h \
+  /opt/homebrew/include/QtGui/qscreen.h \
+  /opt/homebrew/include/QtCore/QList \
+  /opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
+  /opt/homebrew/include/QtCore/QObject \
+  /opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+  /opt/homebrew/include/QtCore/QRect \
+  /opt/homebrew/lib/QtCore.framework/Headers/qrect.h \
+  /opt/homebrew/include/QtCore/QSize \
+  /opt/homebrew/lib/QtCore.framework/Headers/qsize.h \
+  /opt/homebrew/include/QtCore/QSizeF \
+  /opt/homebrew/include/QtGui/QTransform \
+  /opt/homebrew/lib/QtGui.framework/Headers/qtransform.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/GeoParser.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADData.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+  /opt/homebrew/include/QtCore/qcoreapplication.h \
+  /opt/homebrew/include/QtCore/qeventloop.h \
+  /opt/homebrew/include/QtCore/qcoreapplication_platform.h \
+  /opt/homebrew/include/QtGui/qguiapplication.h \
+  /opt/homebrew/include/QtGui/qinputmethod.h \
+  /opt/homebrew/include/QtCore/qlocale.h \
+  /opt/homebrew/include/QtGui/qguiapplication_platform.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADWidget.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget

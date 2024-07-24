@@ -3,9 +3,15 @@
 
 #include <QMainWindow>
 #include <QStandardItemModel>
-#include "NekMeshObject.h"
 #include <QPushButton>
+#include <QButtonGroup>
 
+#include "NekMeshObject.h"
+#include "glwidget.h"
+
+// Forward declaration
+class SourceWindow;
+class OptionsWindow;
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -21,21 +27,29 @@ public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
 
-
 private:
     Ui::MainWindow *ui;
-
+    GLWidget *glWidget;
     // TreeView Model
     QStandardItemModel* model;
     // TableVIEW Model
     QStandardItemModel* table_model;
 
     std::shared_ptr<NekMeshObject> nekMeshObjectPtr;
-    void importFile();
 
+    QButtonGroup btnGroup;
+    SourceWindow *sourceWnd;
+    OptionsWindow *optionsWnd;
+
+    void importFile();
+    void importCertainFile(char type);
+    void browseFile();
+public slots:
+    void onAddModuleBtnClicked();
 private slots:
 
-    void onAddModuleBtnClicked();
+
+    void onDeleteModuleBtnClicked();
     void onRunBtnClicked();
     void onSaveBtnClicked();
 

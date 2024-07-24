@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets Gui Widgets OpenGL)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets Gui Widgets OpenGL)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL)
 
 # Find Nektar++
 FIND_PACKAGE(Nektar++ REQUIRED)
@@ -38,6 +38,19 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         outputdialog.h outputdialog.cpp outputdialog.ui
         glwidget.h
         glwidget.cpp
+        GeoParser.h
+        GeoParser.cpp
+        CADWidget.h
+        CADWidget.cpp
+        CADData.h
+        parameterform.h parameterform.cpp parameterform.ui
+        sourcewindow.h sourcewindow.cpp sourcewindow.ui
+        optionswindow.h optionswindow.cpp optionswindow.ui
+
+
+
+
+
 
     )
 # Define target properties for Android with Qt 6 as:
@@ -61,7 +74,7 @@ endif()
 
 target_link_libraries(NekMeshUI PRIVATE
     Qt${QT_VERSION_MAJOR}::OpenGLWidgets
-    Qt${QT_VERSION_MAJOR}::Gui
+    Qt${QT_VERSION_MAJOR}::Xml
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::OpenGL
     ${NEKTAR++_LIBRARIES}

@@ -1058,6 +1058,11 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/lib/QtGui.framework/Headers/QStandardItemModel \
   /opt/homebrew/lib/QtGui.framework/Headers/qstandarditemmodel.h \
   /opt/homebrew/include/QtCore/qabstractitemmodel.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
+  /opt/homebrew/include/QtWidgets/qabstractbutton.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/NekMeshObject.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/LibUtilities/BasicConst/GitRevision.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/LibUtilities/LibUtilitiesDeclspec.h \
@@ -2153,9 +2158,63 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADSurf.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADSystem.h \
   /Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/NekMesh/CADSystem/CADVert.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
-  /opt/homebrew/include/QtWidgets/qabstractbutton.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/glwidget.h \
+  /opt/homebrew/lib/QtOpenGLWidgets.framework/Headers/QOpenGLWidget \
+  /opt/homebrew/lib/QtOpenGLWidgets.framework/Headers/qopenglwidget.h \
+  /opt/homebrew/include/QtOpenGLWidgets/qtopenglwidgetsglobal.h \
+  /opt/homebrew/include/QtOpenGLWidgets/qtopenglwidgetsexports.h \
+  /opt/homebrew/include/QtWidgets/QWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
+  /opt/homebrew/include/QtGui/QSurfaceFormat \
+  /opt/homebrew/lib/QtGui.framework/Headers/qsurfaceformat.h \
+  /opt/homebrew/include/QtGui/qopengl.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gltypes.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/glext.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/OpenGLAvailability.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/System/Library/Frameworks/OpenGL.framework/Headers/gl3.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/c++/v1/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/15.0.0/include/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/inttypes.h \
+  /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include/xlocale/_inttypes.h \
+  /opt/homebrew/lib/QtGui.framework/Headers/QOpenGLFunctions \
+  /opt/homebrew/lib/QtGui.framework/Headers/qopenglfunctions.h \
+  /opt/homebrew/include/QtGui/qopenglcontext.h \
+  /opt/homebrew/include/QtCore/qnativeinterface.h \
+  /opt/homebrew/include/QtGui/qopenglcontext_platform.h \
+  /opt/homebrew/lib/QtGui.framework/Headers/QMatrix4x4 \
+  /opt/homebrew/lib/QtGui.framework/Headers/qmatrix4x4.h \
+  /opt/homebrew/include/QtGui/qvector3d.h \
+  /opt/homebrew/include/QtGui/qvectornd.h \
+  /opt/homebrew/include/QtGui/qvector4d.h \
+  /opt/homebrew/include/QtGui/qquaternion.h \
+  /opt/homebrew/include/QtGui/qgenericmatrix.h \
+  /opt/homebrew/lib/QtCore.framework/Headers/QBasicTimer \
+  /opt/homebrew/lib/QtCore.framework/Headers/qbasictimer.h \
+  /opt/homebrew/lib/QtGui.framework/Headers/QWheelEvent \
+  /opt/homebrew/lib/QtGui.framework/Headers/qevent.h \
+  /opt/homebrew/include/QtCore/qcoreevent.h \
+  /opt/homebrew/include/QtCore/qiodevice.h \
+  /opt/homebrew/include/QtCore/qpointer.h \
+  /opt/homebrew/include/QtCore/qurl.h \
+  /opt/homebrew/include/QtGui/qeventpoint.h \
+  /opt/homebrew/include/QtGui/qvector2d.h \
+  /opt/homebrew/include/QtGui/qpointingdevice.h \
+  /opt/homebrew/include/QtGui/qinputdevice.h \
+  /opt/homebrew/include/QtGui/qscreen.h \
+  /opt/homebrew/include/QtCore/QList \
+  /opt/homebrew/lib/QtCore.framework/Headers/qlist.h \
+  /opt/homebrew/include/QtCore/QObject \
+  /opt/homebrew/lib/QtCore.framework/Headers/qobject.h \
+  /opt/homebrew/include/QtCore/QRect \
+  /opt/homebrew/lib/QtCore.framework/Headers/qrect.h \
+  /opt/homebrew/include/QtCore/QSize \
+  /opt/homebrew/lib/QtCore.framework/Headers/qsize.h \
+  /opt/homebrew/include/QtCore/QSizeF \
+  /opt/homebrew/include/QtGui/QTransform \
+  /opt/homebrew/lib/QtGui.framework/Headers/qtransform.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/GeoParser.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADData.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/include/./ui_mainwindow.h \
   /opt/homebrew/include/QtCore/QVariant \
   /opt/homebrew/lib/QtCore.framework/Headers/qvariant.h \
@@ -2164,27 +2223,14 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/QApplication \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
   /opt/homebrew/include/QtCore/qcoreapplication.h \
-  /opt/homebrew/include/QtCore/qcoreevent.h \
   /opt/homebrew/include/QtCore/qeventloop.h \
-  /opt/homebrew/include/QtCore/qnativeinterface.h \
   /opt/homebrew/include/QtCore/qcoreapplication_platform.h \
   /opt/homebrew/include/QtGui/qguiapplication.h \
   /opt/homebrew/include/QtGui/qinputmethod.h \
   /opt/homebrew/include/QtCore/qlocale.h \
   /opt/homebrew/include/QtGui/qguiapplication_platform.h \
-  /opt/homebrew/include/QtWidgets/QGraphicsView \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qgraphicsview.h \
-  /opt/homebrew/include/QtGui/qpainter.h \
-  /opt/homebrew/include/QtGui/qtextoption.h \
-  /opt/homebrew/include/QtGui/qpen.h \
-  /opt/homebrew/include/QtWidgets/qscrollarea.h \
-  /opt/homebrew/include/QtWidgets/qabstractscrollarea.h \
-  /opt/homebrew/include/QtWidgets/qframe.h \
-  /opt/homebrew/include/QtWidgets/qgraphicsscene.h \
-  /opt/homebrew/include/QtWidgets/QHeaderView \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
-  /opt/homebrew/include/QtWidgets/qabstractitemview.h \
-  /opt/homebrew/include/QtCore/qitemselectionmodel.h \
+  /opt/homebrew/include/QtWidgets/QComboBox \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qcombobox.h \
   /opt/homebrew/include/QtWidgets/qabstractitemdelegate.h \
   /opt/homebrew/include/QtWidgets/qstyleoption.h \
   /opt/homebrew/include/QtWidgets/qabstractspinbox.h \
@@ -2195,12 +2241,34 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/qstyle.h \
   /opt/homebrew/include/QtWidgets/qtabbar.h \
   /opt/homebrew/include/QtWidgets/qrubberband.h \
+  /opt/homebrew/include/QtWidgets/qframe.h \
+  /opt/homebrew/include/QtWidgets/QFormLayout \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qformlayout.h \
+  /opt/homebrew/include/QtWidgets/QLayout \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qlayout.h \
+  /opt/homebrew/include/QtWidgets/qlayoutitem.h \
+  /opt/homebrew/include/QtWidgets/qboxlayout.h \
+  /opt/homebrew/include/QtWidgets/qlayout.h \
+  /opt/homebrew/include/QtWidgets/qgridlayout.h \
+  /opt/homebrew/include/QtWidgets/QFrame \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qframe.h \
+  /opt/homebrew/include/QtWidgets/QGridLayout \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
+  /opt/homebrew/include/QtWidgets/QHeaderView \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
+  /opt/homebrew/include/QtWidgets/qabstractitemview.h \
+  /opt/homebrew/include/QtWidgets/qabstractscrollarea.h \
+  /opt/homebrew/include/QtCore/qitemselectionmodel.h \
   /opt/homebrew/include/QtWidgets/QLabel \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qlabel.h \
   /opt/homebrew/include/QtGui/qpicture.h \
-  /opt/homebrew/include/QtCore/qiodevice.h \
   /opt/homebrew/include/QtGui/qtextdocument.h \
-  /opt/homebrew/include/QtCore/qurl.h \
+  /opt/homebrew/include/QtWidgets/QLineEdit \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qlineedit.h \
+  /opt/homebrew/include/QtGui/qtextcursor.h \
+  /opt/homebrew/include/QtGui/qtextformat.h \
+  /opt/homebrew/include/QtGui/qpen.h \
+  /opt/homebrew/include/QtGui/qtextoption.h \
   /opt/homebrew/include/QtWidgets/QMainWindow \
   /opt/homebrew/include/QtWidgets/QMenu \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmenu.h \
@@ -2208,14 +2276,23 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmenubar.h \
   /opt/homebrew/include/QtWidgets/qmenu.h \
   /opt/homebrew/include/QtWidgets/QPushButton \
+  /opt/homebrew/include/QtWidgets/QSpacerItem \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qlayoutitem.h \
+  /opt/homebrew/include/QtWidgets/QStackedWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qstackedwidget.h \
   /opt/homebrew/include/QtWidgets/QStatusBar \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qstatusbar.h \
+  /opt/homebrew/include/QtWidgets/QTabWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtabwidget.h \
   /opt/homebrew/include/QtWidgets/QTableView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qtableview.h \
+  /opt/homebrew/include/QtWidgets/QTableWidget \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtablewidget.h \
+  /opt/homebrew/include/QtWidgets/qtableview.h \
+  /opt/homebrew/include/QtWidgets/QToolButton \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtoolbutton.h \
   /opt/homebrew/include/QtWidgets/QTreeView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qtreeview.h \
-  /opt/homebrew/include/QtWidgets/QWidget \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qwidget.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
@@ -2227,8 +2304,6 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QStyleFactory \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qstylefactory.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QTableWidget \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qtablewidget.h \
-  /opt/homebrew/include/QtWidgets/qtableview.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QFileDialog \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qfiledialog.h \
   /opt/homebrew/include/QtCore/qdir.h \
@@ -2241,11 +2316,10 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/qdialog.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
-  /opt/homebrew/include/QtWidgets/qlayout.h \
-  /opt/homebrew/include/QtWidgets/qlayoutitem.h \
-  /opt/homebrew/include/QtWidgets/qboxlayout.h \
-  /opt/homebrew/include/QtWidgets/qgridlayout.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
   /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h \
-  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/SelectionDialog.h
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/SelectionDialog.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.h

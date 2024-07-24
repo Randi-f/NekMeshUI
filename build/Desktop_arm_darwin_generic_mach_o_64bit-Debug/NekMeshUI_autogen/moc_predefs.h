@@ -13,6 +13,7 @@
 #define QT_OPENGLWIDGETS_LIB 1
 #define QT_OPENGL_LIB 1
 #define QT_WIDGETS_LIB 1
+#define QT_XML_LIB 1
 #define SIZEOF_DPTR (sizeof(void*))
 #define TETGEN_HAS_DEINITIALIZE 1
 #define TIXML_USE_STL 1

@@ -346,6 +346,15 @@
 		"/opt/homebrew/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsTargets-release.cmake",
 		"/opt/homebrew/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsAdditionalTargetInfo.cmake",
 		"/opt/homebrew/lib/cmake/Qt6OpenGLWidgets/Qt6OpenGLWidgetsVersionlessTargets.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlConfigVersion.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlConfigVersionImpl.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlConfig.cmake",
+		"/opt/homebrew/Cellar/cmake/3.29.1/share/cmake/Modules/CMakeFindDependencyMacro.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlDependencies.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlTargets-release.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlAdditionalTargetInfo.cmake",
+		"/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake",
 		"/Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/lib/nektar++/cmake/Nektar++Config.cmake",
 		"/Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/lib/nektar++/cmake/Nektar++Libraries.cmake",
 		"/Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/lib/nektar++/cmake/Nektar++Libraries-release.cmake",
@@ -358,6 +367,24 @@
 	"DEP_FILE_RULE_NAME" : "NekMeshUI_autogen/timestamp",
 	"HEADERS" : 
 	[
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADData.h",
+			"MU",
+			"EWIEGA46WW/moc_CADData.cpp",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADWidget.h",
+			"MU",
+			"EWIEGA46WW/moc_CADWidget.cpp",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/GeoParser.h",
+			"MU",
+			"EWIEGA46WW/moc_GeoParser.cpp",
+			null
+		],
 		[
 			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/MeshRenderer.h",
 			"MU",
@@ -389,9 +416,27 @@
 			null
 		],
 		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.h",
+			"MU",
+			"EWIEGA46WW/moc_optionswindow.cpp",
+			null
+		],
+		[
 			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_outputdialog.cpp",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.h",
+			"MU",
+			"EWIEGA46WW/moc_parameterform.cpp",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.h",
+			"MU",
+			"EWIEGA46WW/moc_sourcewindow.cpp",
 			null
 		]
 	],
@@ -415,6 +460,7 @@
 		"QT_OPENGLWIDGETS_LIB",
 		"QT_OPENGL_LIB",
 		"QT_WIDGETS_LIB",
+		"QT_XML_LIB",
 		"TETGEN_HAS_DEINITIALIZE",
 		"TIXML_USE_STL",
 		"_LIBCPP_ENABLE_CXX17_REMOVED_UNARY_BINARY_FUNCTION"
@@ -442,6 +488,8 @@
 		"/opt/homebrew/lib/QtGui.framework",
 		"/opt/homebrew/lib/QtWidgets.framework/Headers",
 		"/opt/homebrew/lib/QtWidgets.framework",
+		"/opt/homebrew/lib/QtXml.framework/Headers",
+		"/opt/homebrew/lib/QtXml.framework",
 		"/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX14.4.sdk/usr/include",
 		"/usr/include"
 	],
@@ -478,6 +526,16 @@
 	"SOURCES" : 
 	[
 		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADWidget.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/GeoParser.cpp",
+			"MU",
+			null
+		],
+		[
 			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/NekMeshObject.cpp",
 			"MU",
 			null
@@ -498,7 +556,22 @@
 			null
 		],
 		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.cpp",
+			"MU",
+			null
+		],
+		[
 			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.cpp",
+			"MU",
+			null
+		],
+		[
+			"/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.cpp",
 			"MU",
 			null
 		]
