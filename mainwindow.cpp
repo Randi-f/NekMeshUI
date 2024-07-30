@@ -1,8 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "outputdialog.h"
-#include <QGraphicsScene>
-#include <QGraphicsRectItem>
+// #include <QGraphicsScene>
+// #include <QGraphicsRectItem>
 #include <QStyleFactory>
 #include <QTableWidget>
 #include <QFileDialog>
@@ -11,20 +11,25 @@
 #include <QVBoxLayout>
 #include <QDialog>
 #include <QMessageBox>
+#include <QToolButton>
 
 #include "SelectionDialog.h"
 #include "glwidget.h"
 #include "sourcewindow.h"
 #include "optionswindow.h"
+#include "addprocessmoduledialog.h"
+#include "peraligndialog.h"
+#include "custombutton.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-    , sourceWnd(new SourceWindow(this))
-    , optionsWnd(new OptionsWindow(this))
 {
     ui->setupUi(this);
 
+    btnGroup = new QButtonGroup(this);
+
+    ui->VLProcessPanel->setAlignment(Qt::AlignTop);
 
     nekMeshObjectPtr = std::make_shared<NekMeshObject>();
 
@@ -39,36 +44,68 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btn_run, &QPushButton::clicked, this, &MainWindow::onRunBtnClicked);
     connect(ui->btn_save, &QPushButton::clicked, this, &MainWindow::onSaveBtnClicked);
 
-    connect(ui->actionmsh, &QAction::triggered, this, [this]() { importCertainFile('0'); });
-    connect(ui->actionmcf, &QAction::triggered, this, [this]() { importCertainFile('1'); });
-    connect(ui->actionRun, &QAction::triggered, this, &MainWindow::onRunBtnClicked);
-
+    // menu bar
     connect(ui->btnBrowseFile, &QPushButton::clicked, this, &MainWindow::browseFile);
 
-    ui->stackedWidget->addWidget(sourceWnd);
-    ui->stackedWidget->addWidget(optionsWnd);
+    // Panel
+    connect(ui->btnAdd, &QPushButton::clicked, this, &MainWindow::onAddProcessModuleBtnClicked);
+    connect(ui->btnRunAndSave, &QPushButton::clicked, this, &MainWindow::onRunAndSaveBtnClicked);
 
-    btnGroup.addButton(ui->btnSource, 0);
-    btnGroup.addButton(ui->btnOptions, 1);
-
-    connect(&btnGroup, QOverload<QAbstractButton*>::of(&QButtonGroup::buttonClicked),
-            [=](QAbstractButton* button){
-                int index = btnGroup.id(button); // 获取按钮在按钮组中的索引
-                ui->stackedWidget->setCurrentIndex(index);
-            });
-
-    // 设置默认选中的页面
-    btnGroup.button(0)->setChecked(true);
-    ui->stackedWidget->setCurrentIndex(0);
+    connect(ui->actionmsh, &QAction::triggered, this, [this]() { importCertainFile('0'); });
+    connect(ui->actionmcf, &QAction::triggered, this, [this]() { importCertainFile('1'); });
+    connect(ui->actionRun, &QAction::triggered, this, &MainWindow::process);
 
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
-    delete sourceWnd;  // Cleanup SourceWindow
-    delete optionsWnd;
 }
+
+void MainWindow::onRunAndSaveBtnClicked(){
+    // need to add the input module with the process module, otherwise some config will not be correct?
+    nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
+
+    // 遍历布局中的所有项
+    for (int i = 0; i < ui->VLProcessPanel->count(); ++i) {
+        QLayoutItem* item = ui->VLProcessPanel->itemAt(i);
+        if (item) {
+            QWidget* widget = item->widget();
+            if (widget && qobject_cast<CustomButton*>(widget)) {
+                CustomButton* customButton = qobject_cast<CustomButton*>(widget);
+                map<string,string> values = customButton->getConfig();
+                qDebug() << QString::fromStdString(values["surf1"]);
+                nekMeshObjectPtr->addProcessModule(values);
+            }
+        }
+    }
+
+    nekMeshObjectPtr->addOutputModule("default",ui->comboOutputFileType->currentText().toStdString());
+    nekMeshObjectPtr->process();
+}
+void MainWindow::process(){
+    // need to add the input module with the process module, otherwise some config will not be correct?
+    nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
+
+    // 遍历布局中的所有项
+    for (int i = 0; i < ui->VLProcessPanel->count(); ++i) {
+        QLayoutItem* item = ui->VLProcessPanel->itemAt(i);
+        if (item) {
+            QWidget* widget = item->widget();
+            if (widget && qobject_cast<CustomButton*>(widget)) {
+                CustomButton* customButton = qobject_cast<CustomButton*>(widget);
+                map<string,string> values = customButton->getConfig();
+                qDebug() << QString::fromStdString(values["surf1"]);
+                nekMeshObjectPtr->addProcessModule(values);
+            }
+        }
+    }
+
+    nekMeshObjectPtr->process();
+
+}
+
+
 
 void MainWindow::onDeleteModuleBtnClicked(){
     QModelIndex index = ui->treeView->currentIndex();
@@ -116,6 +153,7 @@ void MainWindow::onSaveBtnClicked(){
 
 }
 
+// old version
 void MainWindow::onRunBtnClicked(){
 
     qDebug() << "loading configurations";
@@ -133,8 +171,6 @@ void MainWindow::onRunBtnClicked(){
             nekMeshObjectPtr->addOutputModule("default",outputType->text().toStdString());
             qDebug()<< "output loaded:" << outputType->text();
             QMessageBox::information(this, "hint", "file stored at Desktop!");
-
-
         }
         else if(item->text().toStdString()=="peralign"){
             map<string, string>values;
@@ -165,6 +201,91 @@ void MainWindow::onRunBtnClicked(){
     glWidget->update();
 }
 
+void mergeMaps(std::map<std::string, std::string>& allParams, const std::map<std::string, std::string>& values) {
+    // 将 values 中的所有键值对插入到 allParams 中
+    allParams.insert(values.begin(), values.end());
+}
+
+// add btn on Process panel
+void MainWindow::onAddProcessModuleBtnClicked(){
+    AddProcessModuleDialog dialog(this);
+    if (dialog.exec() == QDialog::Accepted) {
+        QString selectedOption = dialog.getSelectedOption();
+        if(selectedOption.compare("Periodic Alignment", Qt::CaseSensitive) == 0 ){
+            cout << "peralign" << endl;
+            map<string, string> values;
+            values["moduleType"]="peralign";
+            values["type"]="Periodic Alignment";
+            values.insert(std::make_pair("desc", ""));
+            CustomButton* button = new CustomButton(values, this);
+            btnGroup->addButton(button);
+            ui->VLProcessPanel->addWidget(button);
+            button->click();
+
+        }
+        if(selectedOption.compare("loadoctree", Qt::CaseSensitive) == 0 ){
+            cout << "octree" << endl;
+            map<string, string> values;
+            values["moduleType"]="loadoctree";
+            values["type"]="loadoctree";
+            values.insert(std::make_pair("desc", ""));
+            CustomButton* button = new CustomButton(values, this);
+            btnGroup->addButton(button);
+            ui->VLProcessPanel->addWidget(button);
+            button->click();
+        }
+    }
+}
+
+// import btn on menu bar
+void MainWindow::importCertainFile(char type)
+{
+    QString filter;
+    switch(type){
+        case '0':filter = "Mesh Files (*.msh)";break;
+        case '1':   filter = "Mcf Files (*.mcf)";break;
+        default:filter = "All Files (*)";break;
+    }
+
+    QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
+    if (!filePath.isEmpty()) {
+        //update TreeView
+        model = new QStandardItemModel(ui->treeView);
+        model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("modules"));
+        QStandardItem* item = new QStandardItem("input");
+        model->appendRow(item);
+        QStandardItem* childItem = new QStandardItem(filePath);
+        item->appendRow(childItem);
+        ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
+        ui->treeView->setModel(model);
+
+    }
+}
+
+// import btn on the Source Panel
+void MainWindow::browseFile()
+{
+    int index = ui->comboFileType->currentIndex();
+    QString filter;
+    switch(index){
+    case 0: filter = "Mesh Files (*.msh)";break;
+    case 1: filter = "CAD Files (*.geo)";break;
+    case 2: filter = "Mcf Files (*.mcf)";break;
+    case 3: filter = "Xml Files (*.xml)";break;
+    default:filter = "All Files (*)";break;
+    }
+
+    QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
+    if (!filePath.isEmpty()) {
+        ui->textFileName->setText(filePath);
+        // nekMeshObjectPtr->addInputModule(filePath.toStdString());
+        // nekMeshObjectPtr->process();
+        // QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
+        // ui->tableSource->setItem(0, 1, item);
+    }
+}
+
+// old version
 void MainWindow::onAddModuleBtnClicked(){
 
     // Get the model from the tree view
@@ -173,7 +294,6 @@ void MainWindow::onAddModuleBtnClicked(){
     SelectionDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         QString selectedOption = dialog.getSelectedOption();
-        // QMessageBox::information(this, "选择结果", "你在对话框中选择了: " + selectedOption);
         if(selectedOption.compare("input", Qt::CaseSensitive) == 0 ){
             importFile();
         }
@@ -349,8 +469,8 @@ void MainWindow::onAddModuleBtnClicked(){
 
 }
 
+//old version
 void MainWindow::importFile(){
-
     QString filePath = QFileDialog::getOpenFileName(this, "Open File", "", "All Files (*)");
     if (!filePath.isEmpty()) {
         //update TreeView
@@ -362,58 +482,6 @@ void MainWindow::importFile(){
         item->appendRow(childItem);
         ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
         ui->treeView->setModel(model);
-
     }
 
 }
-
-void MainWindow::importCertainFile(char type)
-{
-    QString filter;
-    switch(type){
-        case '0':filter = "Mesh Files (*.msh)";break;
-        case '1':   filter = "Mcf Files (*.mcf)";break;
-        default:filter = "All Files (*)";break;
-    }
-
-    QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
-    if (!filePath.isEmpty()) {
-        //update TreeView
-        model = new QStandardItemModel(ui->treeView);
-        model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("modules"));
-        QStandardItem* item = new QStandardItem("input");
-        model->appendRow(item);
-        QStandardItem* childItem = new QStandardItem(filePath);
-        item->appendRow(childItem);
-        ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
-        ui->treeView->setModel(model);
-
-    }
-}
-
-void MainWindow::browseFile()
-{
-    int index = ui->comboFileType->currentIndex();
-    QString filter;
-    switch(index){
-    case 0: filter = "Mesh Files (*.msh)";break;
-    case 1: filter = "CAD Files (*.geo)";break;
-    case 2: filter = "Mcf Files (*.mcf)";break;
-    case 3: filter = "Xml Files (*.xml)";break;
-    default:filter = "All Files (*)";break;
-    }
-
-
-
-
-    QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
-    if (!filePath.isEmpty()) {
-        ui->textFileName->setText(filePath);
-        nekMeshObjectPtr->addInputModule(filePath.toStdString());
-        nekMeshObjectPtr->process();
-        QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
-        ui->tableSource->setItem(0, 1, item);
-    }
-}
-
-

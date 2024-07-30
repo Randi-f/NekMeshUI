@@ -2222,8 +2222,16 @@ CMakeFiles/NekMeshUI.dir/NekMeshUI_autogen/mocs_compilation.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QPushButton \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qpushbutton.h \
   /opt/homebrew/include/QtWidgets/qabstractbutton.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_addprocessmoduledialog.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../addprocessmoduledialog.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_custombutton.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../custombutton.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QToolButton \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtoolbutton.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_glwidget.cpp \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../glwidget.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_loadoctreedialog.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../loadoctreedialog.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_mainwindow.cpp \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../mainwindow.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QMainWindow \
@@ -2234,6 +2242,17 @@ CMakeFiles/NekMeshUI.dir/NekMeshUI_autogen/mocs_compilation.cpp.o: \
   /opt/homebrew/include/QtCore/qabstractitemmodel.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QButtonGroup \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qbuttongroup.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_myglwidget.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../myglwidget.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QApplication \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qapplication.h \
+  /opt/homebrew/include/QtCore/qcoreapplication.h \
+  /opt/homebrew/include/QtCore/qeventloop.h \
+  /opt/homebrew/include/QtCore/qcoreapplication_platform.h \
+  /opt/homebrew/include/QtGui/qguiapplication.h \
+  /opt/homebrew/include/QtGui/qinputmethod.h \
+  /opt/homebrew/include/QtCore/qlocale.h \
+  /opt/homebrew/include/QtGui/qguiapplication_platform.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_optionswindow.cpp \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../optionswindow.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
@@ -2241,5 +2260,9 @@ CMakeFiles/NekMeshUI.dir/NekMeshUI_autogen/mocs_compilation.cpp.o: \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../outputdialog.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_parameterform.cpp \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../parameterform.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_peraligndialog.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../peraligndialog.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_refinementdialog.cpp \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../refinementdialog.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/moc_sourcewindow.cpp \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/EWIEGA46WW/../../../../sourcewindow.h

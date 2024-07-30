@@ -194,21 +194,33 @@ NekMeshUI_autogen/timestamp: \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/NekMeshObject.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/NekMeshObject.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/SelectionDialog.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/.qtc/package-manager/auto-setup.cmake \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles/3.29.1/CMakeCXXCompiler.cmake \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles/3.29.1/CMakeSystem.cmake \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/NekMeshUI_autogen/moc_predefs.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/glwidget.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/glwidget.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/main.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/mainwindow.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/mainwindow.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.h \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.cpp \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.h \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.cpp \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.h \
 	/Users/shihan/D/IC/Individual_project/codes/nektar++/build/dist/include/nektar++/LibUtilities/BasicConst/GitRevision.h \
@@ -1236,10 +1248,13 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcontainerinfo.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcontainertools_impl.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcontiguouscache.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcoreapplication.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcoreapplication_platform.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qcoreevent.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qdarwinhelpers.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qdatastream.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qdebug.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qeventloop.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qexceptionhandling.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qflags.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qfloat16.h \
@@ -1258,6 +1273,7 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qlatin1stringview.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qline.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qlist.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qlocale.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qlogging.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qmalloc.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtCore.framework/Versions/A/Headers/qmap.h \
@@ -1343,9 +1359,12 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qfontinfo.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qfontmetrics.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qgenericmatrix.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qguiapplication.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qguiapplication_platform.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qicon.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qimage.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qinputdevice.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qinputmethod.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qkeysequence.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qmatrix4x4.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtGui.framework/Versions/A/Headers/qopengl.h \
@@ -1378,14 +1397,17 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtOpenGLWidgets.framework/Versions/A/Headers/qopenglwidget.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtOpenGLWidgets.framework/Versions/A/Headers/qtopenglwidgetsexports.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtOpenGLWidgets.framework/Versions/A/Headers/qtopenglwidgetsglobal.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QApplication \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QButtonGroup \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QDialog \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QMainWindow \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QMessageBox \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QPushButton \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QToolButton \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QVBoxLayout \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/QWidget \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qabstractbutton.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qapplication.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qboxlayout.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qbuttongroup.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qdialog.h \
@@ -1398,6 +1420,7 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qpushbutton.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qsizepolicy.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qtabwidget.h \
+	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qtoolbutton.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qtwidgets-config.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsexports.h \
 	/opt/homebrew/Cellar/qt/6.6.2_2/lib/QtWidgets.framework/Versions/A/Headers/qtwidgetsglobal.h \
@@ -1635,9 +1658,13 @@ NekMeshUI_autogen/timestamp: \
 	/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlTargets-release.cmake \
 	/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlTargets.cmake \
 	/opt/homebrew/lib/cmake/Qt6Xml/Qt6XmlVersionlessTargets.cmake \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.ui \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.ui \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/mainwindow.ui \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.ui \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.ui \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.ui \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.ui \
+	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.ui \
 	/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.ui \
 	/opt/homebrew/Cellar/cmake/3.29.1/bin/cmake

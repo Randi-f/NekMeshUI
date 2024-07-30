@@ -3,9 +3,9 @@
 #include <QApplication>
 
 #include "glwidget.h"
-#include "CADWidget.h"
+// #include "CADWidget.h"
 #include "parameterform.h"
-
+// #include "myglwidget.h"
 
 void mainFunction(int argc, char *argv[]){
     // main function
@@ -50,7 +50,17 @@ int main(int argc, char *argv[])
 
     mainFunction(argc, argv);
     // testCAD(argc, argv);
+
     return 0;
+
+
+    // different colors test
+    // QApplication app(argc, argv);
+
+    // MyGLWidget widget;
+    // widget.resize(400, 400);
+    // widget.show();
+    // return app.exec();
 
     //OpenGL test
     // QApplication a(argc, argv);

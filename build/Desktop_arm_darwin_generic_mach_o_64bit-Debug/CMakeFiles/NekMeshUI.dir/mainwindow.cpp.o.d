@@ -2252,8 +2252,6 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/qgridlayout.h \
   /opt/homebrew/include/QtWidgets/QFrame \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qframe.h \
-  /opt/homebrew/include/QtWidgets/QGridLayout \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qgridlayout.h \
   /opt/homebrew/include/QtWidgets/QHeaderView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qheaderview.h \
   /opt/homebrew/include/QtWidgets/qabstractitemview.h \
@@ -2276,10 +2274,8 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmenubar.h \
   /opt/homebrew/include/QtWidgets/qmenu.h \
   /opt/homebrew/include/QtWidgets/QPushButton \
-  /opt/homebrew/include/QtWidgets/QSpacerItem \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qlayoutitem.h \
-  /opt/homebrew/include/QtWidgets/QStackedWidget \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qstackedwidget.h \
+  /opt/homebrew/include/QtWidgets/QScrollArea \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qscrollarea.h \
   /opt/homebrew/include/QtWidgets/QStatusBar \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qstatusbar.h \
   /opt/homebrew/include/QtWidgets/QTabWidget \
@@ -2289,18 +2285,13 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtWidgets/QTableWidget \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qtablewidget.h \
   /opt/homebrew/include/QtWidgets/qtableview.h \
-  /opt/homebrew/include/QtWidgets/QToolButton \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qtoolbutton.h \
   /opt/homebrew/include/QtWidgets/QTreeView \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qtreeview.h \
+  /opt/homebrew/include/QtWidgets/QVBoxLayout \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/outputdialog.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QDialog \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qdialog.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QGraphicsScene \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qgraphicsscene.h \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/QGraphicsRectItem \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qgraphicsitem.h \
-  /opt/homebrew/include/QtGui/qpainterpath.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QStyleFactory \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qstylefactory.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QTableWidget \
@@ -2315,11 +2306,15 @@ CMakeFiles/NekMeshUI.dir/mainwindow.cpp.o: \
   /opt/homebrew/include/QtCore/qtimezone.h \
   /opt/homebrew/include/QtWidgets/qdialog.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QVBoxLayout \
-  /opt/homebrew/lib/QtWidgets.framework/Headers/qboxlayout.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QMessageBox \
   /opt/homebrew/lib/QtWidgets.framework/Headers/qmessagebox.h \
   /opt/homebrew/include/QtWidgets/qdialogbuttonbox.h \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/QToolButton \
+  /opt/homebrew/lib/QtWidgets.framework/Headers/qtoolbutton.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/SelectionDialog.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/sourcewindow.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget \
-  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.h
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.h \
+  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.h

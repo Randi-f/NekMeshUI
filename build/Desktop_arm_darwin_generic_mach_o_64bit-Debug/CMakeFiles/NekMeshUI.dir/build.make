@@ -230,6 +230,90 @@ CMakeFiles/NekMeshUI.dir/optionswindow.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/optionswindow.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/optionswindow.cpp -o CMakeFiles/NekMeshUI.dir/optionswindow.cpp.s
 
+CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.cpp
+CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o -MF CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o.d -o CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.cpp
+
+CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.cpp > CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.i
+
+CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/addprocessmoduledialog.cpp -o CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.s
+
+CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.cpp
+CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o -MF CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o.d -o CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.cpp
+
+CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.cpp > CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.i
+
+CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/peraligndialog.cpp -o CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.s
+
+CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.cpp
+CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o -MF CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o.d -o CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.cpp
+
+CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.cpp > CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.i
+
+CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/refinementdialog.cpp -o CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.s
+
+CMakeFiles/NekMeshUI.dir/custombutton.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/custombutton.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.cpp
+CMakeFiles/NekMeshUI.dir/custombutton.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object CMakeFiles/NekMeshUI.dir/custombutton.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/custombutton.cpp.o -MF CMakeFiles/NekMeshUI.dir/custombutton.cpp.o.d -o CMakeFiles/NekMeshUI.dir/custombutton.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.cpp
+
+CMakeFiles/NekMeshUI.dir/custombutton.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/custombutton.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.cpp > CMakeFiles/NekMeshUI.dir/custombutton.cpp.i
+
+CMakeFiles/NekMeshUI.dir/custombutton.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/custombutton.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/custombutton.cpp -o CMakeFiles/NekMeshUI.dir/custombutton.cpp.s
+
+CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.cpp
+CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o -MF CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o.d -o CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.cpp
+
+CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.cpp > CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.i
+
+CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/loadoctreedialog.cpp -o CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.s
+
+CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o: CMakeFiles/NekMeshUI.dir/flags.make
+CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o: /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.cpp
+CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o: CMakeFiles/NekMeshUI.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o -MF CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o.d -o CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o -c /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.cpp
+
+CMakeFiles/NekMeshUI.dir/myglwidget.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/NekMeshUI.dir/myglwidget.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.cpp > CMakeFiles/NekMeshUI.dir/myglwidget.cpp.i
+
+CMakeFiles/NekMeshUI.dir/myglwidget.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/NekMeshUI.dir/myglwidget.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/myglwidget.cpp -o CMakeFiles/NekMeshUI.dir/myglwidget.cpp.s
+
 # Object files for target NekMeshUI
 NekMeshUI_OBJECTS = \
 "CMakeFiles/NekMeshUI.dir/NekMeshUI_autogen/mocs_compilation.cpp.o" \
@@ -242,7 +326,13 @@ NekMeshUI_OBJECTS = \
 "CMakeFiles/NekMeshUI.dir/CADWidget.cpp.o" \
 "CMakeFiles/NekMeshUI.dir/parameterform.cpp.o" \
 "CMakeFiles/NekMeshUI.dir/sourcewindow.cpp.o" \
-"CMakeFiles/NekMeshUI.dir/optionswindow.cpp.o"
+"CMakeFiles/NekMeshUI.dir/optionswindow.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/custombutton.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o" \
+"CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o"
 
 # External object files for target NekMeshUI
 NekMeshUI_EXTERNAL_OBJECTS =
@@ -258,6 +348,12 @@ NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/CADWidget.cpp.o
 NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/parameterform.cpp.o
 NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/sourcewindow.cpp.o
 NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/optionswindow.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/addprocessmoduledialog.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/peraligndialog.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/refinementdialog.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/custombutton.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/loadoctreedialog.cpp.o
+NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/myglwidget.cpp.o
 NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/build.make
 NekMeshUI.app/Contents/MacOS/NekMeshUI: /opt/homebrew/lib/QtOpenGLWidgets.framework/Versions/A/QtOpenGLWidgets
 NekMeshUI.app/Contents/MacOS/NekMeshUI: /opt/homebrew/lib/QtXml.framework/Versions/A/QtXml
@@ -288,7 +384,7 @@ NekMeshUI.app/Contents/MacOS/NekMeshUI: /opt/homebrew/lib/libtinyxml.dylib
 NekMeshUI.app/Contents/MacOS/NekMeshUI: /opt/homebrew/lib/libscotch.dylib
 NekMeshUI.app/Contents/MacOS/NekMeshUI: /opt/homebrew/lib/libscotcherr.dylib
 NekMeshUI.app/Contents/MacOS/NekMeshUI: CMakeFiles/NekMeshUI.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable NekMeshUI.app/Contents/MacOS/NekMeshUI"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=/Users/shihan/D/IC/Individual_project/codes/NekMeshUI/build/Desktop_arm_darwin_generic_mach_o_64bit-Debug/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable NekMeshUI.app/Contents/MacOS/NekMeshUI"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/NekMeshUI.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

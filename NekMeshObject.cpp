@@ -31,6 +31,7 @@ void NekMeshObject::process(){
         {
             modules[i]->GetLogger().SetPrefixLen(11);
             cout << "try process for " << modules[i]->GetModuleName() << endl;
+            modules[i]->PrintConfig();
             modules[i]->Process();
         }
         catch (NekMeshError &e)
@@ -42,6 +43,17 @@ void NekMeshObject::process(){
         log.SetPrefix(modules[i]->GetModuleName());
 
     }
+    cout << "the faceset is: " << endl;
+    // 遍历 faceSet
+    for (const auto& facePtr : mesh->m_faceSet) {
+        if (facePtr) {
+            cout << facePtr->m_id << endl;
+        }
+        else{
+            cout << "null" << endl;
+        }
+    }
+
 }
 
 void NekMeshObject::addProcessModule(map<string, string>values){
@@ -55,7 +67,6 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         modp->RegisterConfig("surf1", values["surf1"]);
         modp->RegisterConfig("surf2", values["surf2"]);
         modp->RegisterConfig("dir", values["dir"]);
-        // Ensure configuration options have been set.
         modp->SetDefaults();
     }
     else if(values["moduleType"]=="loadcad"){
@@ -168,6 +179,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
 }
 
 void NekMeshObject::addInputModule(string inputFile){
+    cout << "input loading:" << inputFile;
     ModuleKey in_module;
     in_module.first=eInputModule;
     // 找到最后一个点的位置

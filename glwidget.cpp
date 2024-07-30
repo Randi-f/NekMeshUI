@@ -272,11 +272,8 @@ void GLWidget::paintGL()
     modelView.rotate(rotationX, 1.0f, 0.0f, 0.0f);  // 绕X轴旋转
     modelView.rotate(rotationY, 0.0f, 1.0f, 0.0f);  // 绕Y轴旋转立方体
 
-
     QMatrix4x4 mvp = projection * modelView;    // 计算模型视图投影矩阵
-
     glLoadMatrixf(mvp.constData()); // 加载模型视图投影矩阵到OpenGL
-
 
     // drawCube();
     // drawCAD(mesh);
@@ -311,53 +308,68 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
 
 void GLWidget::drawMesh(MeshSharedPtr mesh)
 {
-
-
+    glColor3f(1.0, 0.0, 0.0); // red lines
     glBegin(GL_LINES);
-    // glBegin(GL_LINE_STRIP);
-
-    // glColor3f(1.0, 0.0, 0.0); // red lines
     if (mesh->m_cad) {
-        qDebug() << "should draw the CAD";
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
-            // qDebug() << "i is: " << i;
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
-
-            array<Nektar::NekDouble, 21> propotion;
+            array<Nektar::NekDouble, 21> propotion; // 20 intermedieate vertices for one curve
             for(int i=0;i<21;i++){
                 propotion[i]=0.05*i;
             }
             for(int i=0;i<20;i++){
-
                 array<Nektar::NekDouble, 3> loc = curve->P(propotion[i]);
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
                 loc = curve->P(propotion[i+1]);
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
-
             }
-
         }
 
     } else {
-        std::cout << "no CAD to draw here." << std::endl;
-        glVertex3f( 0, 0,  0); glVertex3f( 0,  0,  0);
+        std::cout << "no CAD loaded" << std::endl;
+    }
+    glEnd();
+
+    glColor3f(0.0f, 1.0f, 0.0f); // 设置颜色为绿色
+    glPointSize(5.0f); // 设置点的大小
+    glBegin(GL_POINTS);
+    if (mesh->m_cad){
+        for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
+            CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
+            vector<CADVertSharedPtr> verts =  curve->GetVertex();
+            for (size_t i = 0; i < verts.size(); ++i) {
+                // std::cout << "Vertex " << i << ": (" << verts[i]->x << ", " << verts[i]->y << ")\n";
+                std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
+                glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
+            }
+        }
+
+    //     if(!verts.empty()){
+    //         auto it = verts.begin();
+    //         int id = it->first;
+    //         CADVertSharedPtr vert = it->second;
+    //     }
+
+
+    //     std::cout << "First Vert ID: " << id << std::endl;
+    //     std::array<Nektar::NekDouble, 3> loc = verts[id]->GetLoc();
+    //     cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
     }
 
+    // glVertex2f(0.0f, 0.0f); // 绘制点的位置
+    glEnd();
 
+    glColor3f(1.0f, 1.0f, 1.0f); // 设置颜色为白色
 
-    // glBegin(GL_LINES);
-
-    // glColor3f(0.0, 0.0, 0.0); // white lines
-
+    glBegin(GL_LINES);
     if (!mesh->m_edgeSet.empty()) {
-        qDebug() << "should draw the mesh";
+        qDebug() << "draw the mesh";
         for (const auto& edgeSharedPtr : mesh->m_edgeSet) {
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n1->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n1->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n1->m_z));
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n2->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n2->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n2->m_z));
         }
     } else {
-        std::cout << "EdgeSet is empty." << std::endl;
-        glVertex3f( 0, 0,  0); glVertex3f( 0,  0,  0);
+        std::cout << "No detected Mesh" << std::endl;
     }
 
     glEnd();

@@ -26,6 +26,7 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+    map<string, string> allParams;
 
 private:
     Ui::MainWindow *ui;
@@ -37,21 +38,22 @@ private:
 
     std::shared_ptr<NekMeshObject> nekMeshObjectPtr;
 
-    QButtonGroup btnGroup;
-    SourceWindow *sourceWnd;
-    OptionsWindow *optionsWnd;
+    QButtonGroup *btnGroup;
 
     void importFile();
     void importCertainFile(char type);
     void browseFile();
+    void process();
+
 public slots:
     void onAddModuleBtnClicked();
+
 private slots:
-
-
     void onDeleteModuleBtnClicked();
     void onRunBtnClicked();
     void onSaveBtnClicked();
+    void onAddProcessModuleBtnClicked();
+    void onRunAndSaveBtnClicked();
 
 };
 

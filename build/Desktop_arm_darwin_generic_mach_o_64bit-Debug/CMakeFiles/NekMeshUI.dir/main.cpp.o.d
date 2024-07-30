@@ -2224,6 +2224,5 @@ CMakeFiles/NekMeshUI.dir/main.cpp.o: \
   /opt/homebrew/include/QtGui/qinputmethod.h \
   /opt/homebrew/include/QtCore/qlocale.h \
   /opt/homebrew/include/QtGui/qguiapplication_platform.h \
-  /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/CADWidget.h \
   /Users/shihan/D/IC/Individual_project/codes/NekMeshUI/parameterform.h \
   /opt/homebrew/lib/QtWidgets.framework/Headers/QWidget

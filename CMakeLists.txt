@@ -46,6 +46,12 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         parameterform.h parameterform.cpp parameterform.ui
         sourcewindow.h sourcewindow.cpp sourcewindow.ui
         optionswindow.h optionswindow.cpp optionswindow.ui
+        addprocessmoduledialog.h addprocessmoduledialog.cpp addprocessmoduledialog.ui
+        peraligndialog.h peraligndialog.cpp peraligndialog.ui
+        refinementdialog.h refinementdialog.cpp refinementdialog.ui
+        custombutton.h custombutton.cpp
+        loadoctreedialog.h loadoctreedialog.cpp loadoctreedialog.ui
+        myglwidget.h myglwidget.cpp
 
 
 
