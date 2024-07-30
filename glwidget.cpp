@@ -310,6 +310,7 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
 {
     glColor3f(1.0, 0.0, 0.0); // red lines
     glBegin(GL_LINES);
+    // glBegin(GL_POINTS);
     if (mesh->m_cad) {
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
@@ -334,33 +335,21 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
     glPointSize(5.0f); // 设置点的大小
     glBegin(GL_POINTS);
     if (mesh->m_cad){
+        cout << mesh->m_cad->GetNumCurve() << endl;
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
             vector<CADVertSharedPtr> verts =  curve->GetVertex();
+
             for (size_t i = 0; i < verts.size(); ++i) {
-                // std::cout << "Vertex " << i << ": (" << verts[i]->x << ", " << verts[i]->y << ")\n";
                 std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
+                cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
             }
         }
-
-    //     if(!verts.empty()){
-    //         auto it = verts.begin();
-    //         int id = it->first;
-    //         CADVertSharedPtr vert = it->second;
-    //     }
-
-
-    //     std::cout << "First Vert ID: " << id << std::endl;
-    //     std::array<Nektar::NekDouble, 3> loc = verts[id]->GetLoc();
-    //     cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
     }
-
-    // glVertex2f(0.0f, 0.0f); // 绘制点的位置
     glEnd();
 
     glColor3f(1.0f, 1.0f, 1.0f); // 设置颜色为白色
-
     glBegin(GL_LINES);
     if (!mesh->m_edgeSet.empty()) {
         qDebug() << "draw the mesh";
