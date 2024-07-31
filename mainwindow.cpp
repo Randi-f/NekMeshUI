@@ -82,11 +82,14 @@ void MainWindow::onRunAndSaveBtnClicked(){
 
     nekMeshObjectPtr->addOutputModule("default",ui->comboOutputFileType->currentText().toStdString());
     nekMeshObjectPtr->process();
+    glWidget->setMesh(nekMeshObjectPtr->mesh);
+    glWidget->update();
 }
 void MainWindow::process(){
     // need to add the input module with the process module, otherwise some config will not be correct?
     nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
-
+    // QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
+    // ui->tableSource->setItem(0, 1, item);
     // 遍历布局中的所有项
     for (int i = 0; i < ui->VLProcessPanel->count(); ++i) {
         QLayoutItem* item = ui->VLProcessPanel->itemAt(i);
@@ -102,7 +105,10 @@ void MainWindow::process(){
     }
 
     nekMeshObjectPtr->process();
-
+    QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
+    ui->tableSource->setItem(0, 1, item);
+    glWidget->setMesh(nekMeshObjectPtr->mesh);
+    glWidget->update();
 }
 
 
