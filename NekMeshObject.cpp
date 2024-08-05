@@ -74,7 +74,6 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         mesh->m_expDim   = 3;
         mesh->m_spaceDim = 3;
         mesh->m_nummode  = 5;
-
         process_module.second="loadcad";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
         modp->SetLogger(log);
@@ -169,35 +168,44 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         mesh->m_nummode  = boost::lexical_cast<int>(values["order"]) + 1;
         modp->RegisterConfig("nq", boost::lexical_cast<string>(mesh->m_nummode));
         modp->RegisterConfig("r", values["blprog"]);
-
-
-
-        // Ensure configuration options have been set.
         modp->SetDefaults();
     }
 
 }
 
 void NekMeshObject::addInputModule(string inputFile){
-    cout << "input loading:" << inputFile;
-    ModuleKey in_module;
-    in_module.first=eInputModule;
-    // 找到最后一个点的位置
-    size_t pos = inputFile.find_last_of(".");
-    if (pos != std::string::npos) {
-        // 返回点之后的所有字符
-        in_module.second=inputFile.substr(pos + 1);
-    } else {
-        // 如果没有找到点，返回空字符串
-        return ;
+    const string suffix = ".geo";
+    if(inputFile.compare(inputFile.length() - suffix.length(), suffix.length(), suffix) == 0){
+        cout << "detect CAD file: " << inputFile << endl;;
+        map<string, string>values;
+        values["moduleType"]="loadcad";
+        values["filename"] = inputFile;
+        values["voidpoints"] = "";
+        values["2D"] = "true";
+        values["NACA"] = "false";
+        addProcessModule(values);
     }
-    // Create module.
-    ModuleSharedPtr mod = GetModuleFactory().CreateInstance(in_module, mesh);
-    mod->SetLogger(log);
-    mod->RegisterConfig("infile", inputFile);
-    // Ensure configuration options have been set.
-    mod->SetDefaults();
-    modules.push_back(mod);
+    else{
+        cout << "input loading:" << inputFile;
+        ModuleKey in_module;
+        in_module.first=eInputModule;
+        // 找到最后一个点的位置
+        size_t pos = inputFile.find_last_of(".");
+        if (pos != std::string::npos) {
+            // 返回点之后的所有字符
+            in_module.second=inputFile.substr(pos + 1);
+        } else {
+            // 如果没有找到点，返回空字符串
+            return ;
+        }
+        // Create module.
+        ModuleSharedPtr mod = GetModuleFactory().CreateInstance(in_module, mesh);
+        mod->SetLogger(log);
+        mod->RegisterConfig("infile", inputFile);
+        mod->SetDefaults();
+        modules.push_back(mod);
+    }
+
 }
 
 void NekMeshObject::addOutputModule(string filePath, string fileType){

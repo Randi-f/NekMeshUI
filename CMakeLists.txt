@@ -52,10 +52,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         custombutton.h custombutton.cpp
         loadoctreedialog.h loadoctreedialog.cpp loadoctreedialog.ui
         myglwidget.h myglwidget.cpp
-
-
-
-
+        generator2ddialog.h generator2ddialog.cpp generator2ddialog.ui
+        # processdialog.h processdialog.cpp processdialog.ui
 
 
     )

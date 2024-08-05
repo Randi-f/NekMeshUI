@@ -1,6 +1,7 @@
 #include "custombutton.h"
 #include "peraligndialog.h"
 #include "loadoctreedialog.h"
+#include "generator2ddialog.h"
 #include <QDebug>
 
 using namespace std;
@@ -37,6 +38,12 @@ void CustomButton::openDialog() {
     }
     else if(config["moduleType"]=="loadoctree"){
         LoadoctreeDialog dialog(&config, this);
+        if (dialog.exec() == QDialog::Accepted) {
+            setConfig(dialog.getValues());
+        }
+    }
+    else if(config["moduleType"]=="2dgenerator"){
+        Generator2DDialog dialog(&config, this);
         if (dialog.exec() == QDialog::Accepted) {
             setConfig(dialog.getValues());
         }

@@ -6,6 +6,7 @@
 // #include "CADWidget.h"
 #include "parameterform.h"
 // #include "myglwidget.h"
+#include "generator2ddialog.h"
 
 void mainFunction(int argc, char *argv[]){
     // main function
@@ -51,6 +52,12 @@ int main(int argc, char *argv[])
     mainFunction(argc, argv);
     // testCAD(argc, argv);
 
+
+    // QApplication app(argc, argv);
+    // map<string, string> values;
+    // Generator2DDialog widget(&values);
+    // widget.show();
+    // return app.exec();
     return 0;
 
 

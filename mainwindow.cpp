@@ -62,6 +62,7 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+// Output Panel, save and run btn
 void MainWindow::onRunAndSaveBtnClicked(){
     // need to add the input module with the process module, otherwise some config will not be correct?
     nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
@@ -74,7 +75,6 @@ void MainWindow::onRunAndSaveBtnClicked(){
             if (widget && qobject_cast<CustomButton*>(widget)) {
                 CustomButton* customButton = qobject_cast<CustomButton*>(widget);
                 map<string,string> values = customButton->getConfig();
-                qDebug() << QString::fromStdString(values["surf1"]);
                 nekMeshObjectPtr->addProcessModule(values);
             }
         }
@@ -85,11 +85,11 @@ void MainWindow::onRunAndSaveBtnClicked(){
     glWidget->setMesh(nekMeshObjectPtr->mesh);
     glWidget->update();
 }
+
+// run action on the menu bar
 void MainWindow::process(){
     // need to add the input module with the process module, otherwise some config will not be correct?
     nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
-    // QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
-    // ui->tableSource->setItem(0, 1, item);
     // 遍历布局中的所有项
     for (int i = 0; i < ui->VLProcessPanel->count(); ++i) {
         QLayoutItem* item = ui->VLProcessPanel->itemAt(i);
@@ -98,7 +98,6 @@ void MainWindow::process(){
             if (widget && qobject_cast<CustomButton*>(widget)) {
                 CustomButton* customButton = qobject_cast<CustomButton*>(widget);
                 map<string,string> values = customButton->getConfig();
-                qDebug() << QString::fromStdString(values["surf1"]);
                 nekMeshObjectPtr->addProcessModule(values);
             }
         }
@@ -112,14 +111,6 @@ void MainWindow::process(){
 }
 
 
-
-void MainWindow::onDeleteModuleBtnClicked(){
-    QModelIndex index = ui->treeView->currentIndex();
-    if (index.isValid()) {
-        model->removeRow(index.row(), index.parent());
-    }
-
-}
 
 void MainWindow::onSaveBtnClicked(){
 
@@ -207,11 +198,6 @@ void MainWindow::onRunBtnClicked(){
     glWidget->update();
 }
 
-void mergeMaps(std::map<std::string, std::string>& allParams, const std::map<std::string, std::string>& values) {
-    // 将 values 中的所有键值对插入到 allParams 中
-    allParams.insert(values.begin(), values.end());
-}
-
 // add btn on Process panel
 void MainWindow::onAddProcessModuleBtnClicked(){
     AddProcessModuleDialog dialog(this);
@@ -234,6 +220,17 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             map<string, string> values;
             values["moduleType"]="loadoctree";
             values["type"]="loadoctree";
+            values.insert(std::make_pair("desc", ""));
+            CustomButton* button = new CustomButton(values, this);
+            btnGroup->addButton(button);
+            ui->VLProcessPanel->addWidget(button);
+            button->click();
+        }
+        if(selectedOption.compare("2D generator", Qt::CaseSensitive) == 0 ){
+            cout << "2d generator" << endl;
+            map<string, string> values;
+            values["moduleType"]="2dgenerator";
+            values["type"]="2dgenerator";
             values.insert(std::make_pair("desc", ""));
             CustomButton* button = new CustomButton(values, this);
             btnGroup->addButton(button);
@@ -488,6 +485,15 @@ void MainWindow::importFile(){
         item->appendRow(childItem);
         ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
         ui->treeView->setModel(model);
+    }
+
+}
+
+// old version
+void MainWindow::onDeleteModuleBtnClicked(){
+    QModelIndex index = ui->treeView->currentIndex();
+    if (index.isValid()) {
+        model->removeRow(index.row(), index.parent());
     }
 
 }

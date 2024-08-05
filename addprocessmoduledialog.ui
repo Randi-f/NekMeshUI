@@ -37,6 +37,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btn2dgenerator">
+      <property name="text">
+       <string>2D generator</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>

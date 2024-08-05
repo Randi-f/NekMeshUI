@@ -46,8 +46,6 @@ LoadoctreeDialog::~LoadoctreeDialog()
 }
 
 void LoadoctreeDialog::onAddBtnClicked(){
-    // QString tt = "hi";
-    // ui->listRefinement->addItem(tt);
     RefinementDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
         QString itemText = dialog.getRefinement();
