@@ -248,6 +248,17 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             ui->VLProcessPanel->addWidget(button);
             button->click();
         }
+        if(selectedOption.compare("High Order Surface", Qt::CaseSensitive) == 0 ){
+            cout << "High Order Surface" << endl;
+            map<string, string> values;
+            values["moduleType"]="hosurface";
+            values["type"]="High Order Surface";
+            values.insert(std::make_pair("desc", ""));
+            CustomButton* button = new CustomButton(values, this);
+            btnGroup->addButton(button);
+            ui->VLProcessPanel->addWidget(button);
+            button->click();
+        }
     }
 }
 

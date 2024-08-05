@@ -34,7 +34,6 @@ protected:
 
 private:
     QMatrix4x4 projection;
-
     float rotationX;
     float rotationY;
     float translateX;
@@ -42,11 +41,22 @@ private:
     float scaleFactor;
     QPoint lastMousePosition;
 
+    float x1=0.0;
+    float y1=0.0;
+    float z1=0.0;
+    float x2=0.0;
+    float y2=0.0;
+    float z2=0.0;
+
     MeshSharedPtr mesh;
+
+
 
     void drawCube();
     void updateRotation();
     void drawMesh(MeshSharedPtr mesh);
+    void drawRefinement(float x1, float y1, float z1, float x2, float y2, float z2);
+    void setRefinement(float x1, float y1, float z1, float x2, float y2, float z2);
 
     std::shared_ptr<CADData> cadData;
     void drawCAD(MeshSharedPtr mesh);

@@ -55,6 +55,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         generator2ddialog.h generator2ddialog.cpp generator2ddialog.ui
         bldialog.h bldialog.cpp bldialog.ui
         processdialog.h processdialog.cpp processdialog.ui
+        hosurfacedialog.h hosurfacedialog.cpp hosurfacedialog.ui
 
 
     )

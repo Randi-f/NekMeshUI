@@ -3,6 +3,7 @@
 #include "loadoctreedialog.h"
 #include "generator2ddialog.h"
 #include "bldialog.h"
+#include "hosurfacedialog.h"
 #include <QDebug>
 
 using namespace std;
@@ -51,6 +52,12 @@ void CustomButton::openDialog() {
     }
     else if(config["moduleType"]=="bl"){
         BlDialog dialog(&config, this);
+        if (dialog.exec() == QDialog::Accepted) {
+            setConfig(dialog.getValues());
+        }
+    }
+    else if(config["moduleType"]=="hosurface"){
+        HOSurfaceDialog dialog(&config, this);
         if (dialog.exec() == QDialog::Accepted) {
             setConfig(dialog.getValues());
         }

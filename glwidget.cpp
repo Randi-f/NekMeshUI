@@ -306,8 +306,28 @@ void GLWidget::mouseMoveEvent(QMouseEvent *event)
     update();
 }
 
+void GLWidget::drawRefinement(float x1, float y1, float z1, float x2, float y2, float z2){
+    glColor3f(0.0f, 0.0f, 1.0f); // 设置颜色为蓝色
+    glBegin(GL_LINES);
+    glVertex3f(x1,y1,z1);
+    glVertex3f(x2,y2,z2);
+    glEnd();
+}
+
+void GLWidget::setRefinement(float x1, float y1, float z1, float x2, float y2, float z2){
+    this->x1=x1;
+    this->x2=x2;
+    this->y1=y1;
+    this->y2=y2;
+    this->z1=z1;
+    this->z2=z2;
+}
 void GLWidget::drawMesh(MeshSharedPtr mesh)
 {
+    if(x1!=x2 || y1!=y2 || z1!=z2){
+        drawRefinement(x1,y1,z1,x2,y2,z2);
+    }
+
     glColor3f(1.0, 0.0, 0.0); // red lines
     glBegin(GL_LINES);
     // glBegin(GL_POINTS);
