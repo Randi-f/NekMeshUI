@@ -9,6 +9,7 @@ AddProcessModuleDialog::AddProcessModuleDialog(QWidget *parent)
     connect(ui->btnPeralign, &QPushButton::clicked, this, &AddProcessModuleDialog::onButtonClicked);
     connect(ui->btnLoadoctree, &QPushButton::clicked, this, &AddProcessModuleDialog::onButtonClicked);
     connect(ui->btn2dgenerator, &QPushButton::clicked, this, &AddProcessModuleDialog::onButtonClicked);
+    connect(ui->btnBoundaryLayer, &QPushButton::clicked, this, &AddProcessModuleDialog::onButtonClicked);
 }
 
 AddProcessModuleDialog::~AddProcessModuleDialog()

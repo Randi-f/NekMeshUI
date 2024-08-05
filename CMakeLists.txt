@@ -54,7 +54,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         myglwidget.h myglwidget.cpp
         generator2ddialog.h generator2ddialog.cpp generator2ddialog.ui
         bldialog.h bldialog.cpp bldialog.ui
-        # processdialog.h processdialog.cpp processdialog.ui
+        processdialog.h processdialog.cpp processdialog.ui
 
 
     )

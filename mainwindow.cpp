@@ -237,6 +237,17 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             ui->VLProcessPanel->addWidget(button);
             button->click();
         }
+        if(selectedOption.compare("Boundary Layer", Qt::CaseSensitive) == 0 ){
+            cout << "Boundary Layer" << endl;
+            map<string, string> values;
+            values["moduleType"]="bl";
+            values["type"]="Boundary Layer";
+            values.insert(std::make_pair("desc", ""));
+            CustomButton* button = new CustomButton(values, this);
+            btnGroup->addButton(button);
+            ui->VLProcessPanel->addWidget(button);
+            button->click();
+        }
     }
 }
 

@@ -40,8 +40,6 @@ private:
 
     QButtonGroup *btnGroup;
 
-    QToolButton *selectedButton;
-
     void importFile();
     void importCertainFile(char type);
     void browseFile();

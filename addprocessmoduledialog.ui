@@ -44,6 +44,13 @@
       </property>
      </widget>
     </item>
+    <item>
+     <widget class="QPushButton" name="btnBoundaryLayer">
+      <property name="text">
+       <string>Boundary Layer</string>
+      </property>
+     </widget>
+    </item>
    </layout>
   </widget>
  </widget>
