@@ -15,13 +15,10 @@ class NekMeshObject{
 public:
     MeshSharedPtr mesh = std::shared_ptr<Mesh>(new Mesh());
     vector<ModuleSharedPtr> modules;
-    // create a logger
-
     Logger log;
     NekMeshObject(){
         auto logOutput = std::make_shared<StreamOutput>(std::cout);
         log=Logger(logOutput, INFO);
-
     }
     ~NekMeshObject(){
     }

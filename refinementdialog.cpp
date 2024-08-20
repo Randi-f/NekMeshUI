@@ -4,6 +4,7 @@
 RefinementDialog::RefinementDialog(QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::RefinementDialog)
+    // , mainWindow(mainWindow)
 {
     ui->setupUi(this);
     connect(ui->btnSave, &QPushButton::clicked, this, &RefinementDialog::onSaveBtnClicked);
@@ -17,7 +18,6 @@ RefinementDialog::~RefinementDialog()
 
 QString RefinementDialog::getRefinement(){
     return refinement;
-
 }
 
 void RefinementDialog::onSaveBtnClicked(){

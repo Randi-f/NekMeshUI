@@ -124,6 +124,7 @@ void CADWidget::drawVert(){
         std::array<Nektar::NekDouble, 3> loc = vert->GetLoc();
         glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
     }
+    glEnd();
 
     // if (!verts.empty()) {
     //     // 获取第一个元素
@@ -136,7 +137,7 @@ void CADWidget::drawVert(){
     // } else {
     //     std::cout << "The verts map is empty." << std::endl;
     // }
-    glEnd();
+
 
 }
 

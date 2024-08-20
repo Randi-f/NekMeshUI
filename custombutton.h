@@ -4,14 +4,14 @@
 #include <QToolButton>
 #include <map>
 #include <string>
-
+#include "mainwindow.h"
 using namespace std;
 
 class CustomButton : public QToolButton {
     Q_OBJECT
 
 public:
-    explicit CustomButton(const map<string, string>& config, QWidget* parent = nullptr);
+    explicit CustomButton(MainWindow *mainWindow, const map<string, string>& config, QWidget* parent = nullptr);
 
     map<string, string> getConfig() const;
     void setConfig(const map<string, string>& newConfig);
@@ -22,7 +22,7 @@ private slots:
 
 private:
     map<string, string> config;
-
+    MainWindow *mainWindow;
     void openDialog();
 };
 

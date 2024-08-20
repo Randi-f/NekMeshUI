@@ -2,7 +2,7 @@
 #define REFINEMENTDIALOG_H
 
 #include <QDialog>
-
+// #include "mainwindow.h"
 namespace Ui {
 class RefinementDialog;
 }
@@ -20,6 +20,7 @@ private:
     Ui::RefinementDialog *ui;
     void onSaveBtnClicked();
     QString refinement;
+    // MainWindow *mainWindow;
 };
 
 #endif // REFINEMENTDIALOG_H

@@ -9,8 +9,8 @@ set(CMAKE_AUTORCC ON)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL)
+find_package(QT NAMES Qt6 Qt5 REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL Test)
+find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS OpenGLWidgets Xml Widgets OpenGL Test)
 
 # Find Nektar++
 FIND_PACKAGE(Nektar++ REQUIRED)
@@ -34,7 +34,7 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         NekMeshObject.cpp
         NekMeshObject.h
         SelectionDialog.h
-        MeshRenderer.h
+
         outputdialog.h outputdialog.cpp outputdialog.ui
         glwidget.h
         glwidget.cpp
@@ -56,6 +56,8 @@ if(${QT_VERSION_MAJOR} GREATER_EQUAL 6)
         bldialog.h bldialog.cpp bldialog.ui
         processdialog.h processdialog.cpp processdialog.ui
         hosurfacedialog.h hosurfacedialog.cpp hosurfacedialog.ui
+        testnekmeshobject.h testnekmeshobject.cpp
+        simplemainwindow.ui
 
 
     )
@@ -83,6 +85,7 @@ target_link_libraries(NekMeshUI PRIVATE
     Qt${QT_VERSION_MAJOR}::Xml
     Qt${QT_VERSION_MAJOR}::Widgets
     Qt${QT_VERSION_MAJOR}::OpenGL
+    Qt${QT_VERSION_MAJOR}::Test
     ${NEKTAR++_LIBRARIES}
     ${NEKTAR++_TP_LIBRARIES})
 # 链接库文件

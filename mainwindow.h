@@ -46,12 +46,14 @@ private:
     void process();
 
 public slots:
+    void drawRefinement(const QString &itemText);
     void onAddModuleBtnClicked();
 
 private slots:
     void onDeleteModuleBtnClicked();
     void onRunBtnClicked();
     void onSaveBtnClicked();
+
     void onAddProcessModuleBtnClicked();
     void onRunAndSaveBtnClicked();
 

@@ -22,6 +22,7 @@ public:
 
     void setMesh(MeshSharedPtr m_mesh);
     void setCADData(std::shared_ptr<CADData> cadData);
+    void setRefinement(vector<float> floatValues);
 
 protected:
     void initializeGL() override;
@@ -56,7 +57,7 @@ private:
     void updateRotation();
     void drawMesh(MeshSharedPtr mesh);
     void drawRefinement(float x1, float y1, float z1, float x2, float y2, float z2);
-    void setRefinement(float x1, float y1, float z1, float x2, float y2, float z2);
+
 
     std::shared_ptr<CADData> cadData;
     void drawCAD(MeshSharedPtr mesh);

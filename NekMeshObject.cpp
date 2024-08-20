@@ -36,22 +36,12 @@ void NekMeshObject::process(){
         }
         catch (NekMeshError &e)
         {
-            return ;
+            cout << "an error occurred. Please try again." << endl;
         }
         t.Stop();
 
         log.SetPrefix(modules[i]->GetModuleName());
 
-    }
-    cout << "the faceset is: " << endl;
-    // 遍历 faceSet
-    for (const auto& facePtr : mesh->m_faceSet) {
-        if (facePtr) {
-            cout << facePtr->m_id << endl;
-        }
-        else{
-            cout << "null" << endl;
-        }
     }
 
 }

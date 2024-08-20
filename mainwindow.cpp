@@ -54,6 +54,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->actionmsh, &QAction::triggered, this, [this]() { importCertainFile('0'); });
     connect(ui->actionmcf, &QAction::triggered, this, [this]() { importCertainFile('1'); });
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::process);
+    ui->actionRun->setShortcut(QKeySequence("Ctrl+R"));
 
 }
 
@@ -62,6 +63,42 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::drawRefinement(const QString &itemText){
+    QStringList items = itemText.split(',');
+    vector<float> floatValues;
+    // Iterate through the list and process each item
+    for (const QString &item : items) {
+        // Trim spaces from each item, in case there are any
+        QString trimmedItem = item.trimmed();
+
+        // Convert the trimmed item to a float
+        bool ok;
+        float value = trimmedItem.toFloat(&ok);
+
+        if (ok) {
+            // Conversion successful, add the float value to the vector
+            floatValues.push_back(value);
+        } else {
+            // Handle the error if conversion fails
+            qDebug() << "Invalid float value:" << trimmedItem;
+        }
+    }
+
+    for (float value : floatValues) {
+        // Process each float value
+        std::cout << "Value: " << value << std::endl;
+    }
+
+    if (glWidget) {  // Ensure glWidget is valid
+        glWidget->setRefinement(floatValues);
+        glWidget->update();  // Redraw or update the widget
+        // qDebug() << "glWidget is being initialized!";
+    } else {
+        qDebug() << "glWidget is not initialized!";
+    }
+
+    QMessageBox::information(this, "hint", "drawRefinement");
+}
 // Output Panel, save and run btn
 void MainWindow::onRunAndSaveBtnClicked(){
     // need to add the input module with the process module, otherwise some config will not be correct?
@@ -106,6 +143,12 @@ void MainWindow::process(){
     nekMeshObjectPtr->process();
     QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
     ui->tableSource->setItem(0, 1, item);
+    if(nekMeshObjectPtr->mesh->m_cad){
+        ui->tableSource->setItem(0, 0, new QTableWidgetItem("something"));
+    }
+    else{
+        ui->tableSource->setItem(0, 0, new QTableWidgetItem("no cad detected"));
+    }
     glWidget->setMesh(nekMeshObjectPtr->mesh);
     glWidget->update();
 }
@@ -209,7 +252,7 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             values["moduleType"]="peralign";
             values["type"]="Periodic Alignment";
             values.insert(std::make_pair("desc", ""));
-            CustomButton* button = new CustomButton(values, this);
+            CustomButton* button = new CustomButton(this, values, this);
             btnGroup->addButton(button);
             ui->VLProcessPanel->addWidget(button);
             button->click();
@@ -221,7 +264,7 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             values["moduleType"]="loadoctree";
             values["type"]="loadoctree";
             values.insert(std::make_pair("desc", ""));
-            CustomButton* button = new CustomButton(values, this);
+            CustomButton* button = new CustomButton(this, values, this);
             btnGroup->addButton(button);
             ui->VLProcessPanel->addWidget(button);
             button->click();
@@ -232,7 +275,7 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             values["moduleType"]="2dgenerator";
             values["type"]="2dgenerator";
             values.insert(std::make_pair("desc", ""));
-            CustomButton* button = new CustomButton(values, this);
+            CustomButton* button = new CustomButton(this, values, this);
             btnGroup->addButton(button);
             ui->VLProcessPanel->addWidget(button);
             button->click();
@@ -243,7 +286,7 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             values["moduleType"]="bl";
             values["type"]="Boundary Layer";
             values.insert(std::make_pair("desc", ""));
-            CustomButton* button = new CustomButton(values, this);
+            CustomButton* button = new CustomButton(this, values, this);
             btnGroup->addButton(button);
             ui->VLProcessPanel->addWidget(button);
             button->click();
@@ -254,7 +297,7 @@ void MainWindow::onAddProcessModuleBtnClicked(){
             values["moduleType"]="hosurface";
             values["type"]="High Order Surface";
             values.insert(std::make_pair("desc", ""));
-            CustomButton* button = new CustomButton(values, this);
+            CustomButton* button = new CustomButton(this, values, this);
             btnGroup->addButton(button);
             ui->VLProcessPanel->addWidget(button);
             button->click();

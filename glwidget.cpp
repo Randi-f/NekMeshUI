@@ -19,7 +19,7 @@
 #include <NekMesh/Module/Module.h>
 
 #include <map>
-
+#include <cmath>  // for abs
 
 GLWidget::GLWidget(QWidget *parent)
     : QOpenGLWidget(parent), rotationX(0.0f), rotationY(0.0f), scaleFactor(1.0f),
@@ -314,23 +314,34 @@ void GLWidget::drawRefinement(float x1, float y1, float z1, float x2, float y2, 
     glEnd();
 }
 
-void GLWidget::setRefinement(float x1, float y1, float z1, float x2, float y2, float z2){
-    this->x1=x1;
-    this->x2=x2;
-    this->y1=y1;
-    this->y2=y2;
-    this->z1=z1;
-    this->z2=z2;
+void GLWidget::setRefinement(vector<float> floatValues){
+    cout << "setting refinement" << endl;
+    if(floatValues.size()==8){
+        x1 = floatValues[0];
+        y1 = floatValues[1];
+        z1 = floatValues[2];
+        x2 = floatValues[3];
+        y2 = floatValues[4];
+        z2 = floatValues[5];
+        qDebug() << "setting refinements";
+    }
+    else{
+        x1=x2=0.0;
+        y1=y2=0.0;
+        z1=z2=0.0;
+        qDebug()<< "floatValues not 8";
+    }
 }
 void GLWidget::drawMesh(MeshSharedPtr mesh)
 {
     if(x1!=x2 || y1!=y2 || z1!=z2){
+        cout << "drawing refinement" << endl;
         drawRefinement(x1,y1,z1,x2,y2,z2);
     }
 
     glColor3f(1.0, 0.0, 0.0); // red lines
     glBegin(GL_LINES);
-    // glBegin(GL_POINTS);
+
     if (mesh->m_cad) {
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
@@ -341,21 +352,27 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
             for(int i=0;i<20;i++){
                 array<Nektar::NekDouble, 3> loc = curve->P(propotion[i]);
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
+                cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
                 loc = curve->P(propotion[i+1]);
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
             }
         }
 
+
     } else {
         std::cout << "no CAD loaded" << std::endl;
     }
+
+
     glEnd();
+
+
 
     glColor3f(0.0f, 1.0f, 0.0f); // 设置颜色为绿色
     glPointSize(5.0f); // 设置点的大小
     glBegin(GL_POINTS);
     if (mesh->m_cad){
-        cout << mesh->m_cad->GetNumCurve() << endl;
+        cout << "curve number: " << mesh->m_cad->GetNumCurve() << endl;
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
             vector<CADVertSharedPtr> verts =  curve->GetVertex();
@@ -363,7 +380,7 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
             for (size_t i = 0; i < verts.size(); ++i) {
                 std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
-                cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
+                // cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
             }
         }
     }
@@ -379,6 +396,29 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
         }
     } else {
         std::cout << "No detected Mesh" << std::endl;
+    }
+
+
+    if (mesh->m_cad){
+        vector<int> index;
+        for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
+            CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
+            array<Nektar::NekDouble, 3> loc = curve->P(0);
+            array<Nektar::NekDouble, 3> loc1 = curve->P(1);
+            if(std::abs(loc[0] - loc1[0]) <= 0.001 || std::abs(loc[1] - loc1[1]) <= 0.001){
+                index.push_back(i);
+            }
+        }
+        for (int num : index) {
+            CADCurveSharedPtr curve = mesh->m_cad->GetCurve(num);
+            vector<CADVertSharedPtr> verts =  curve->GetVertex();
+            for (size_t i = 0; i < verts.size(); ++i) {
+                std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
+                glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
+                cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
+
+            }
+        }
     }
 
     glEnd();
@@ -437,29 +477,7 @@ void GLWidget::drawCAD(MeshSharedPtr mesh){
 
     // if (!cadData) return;
 
-    // glBegin(GL_LINES);
-    // for (const auto &lineEntry : cadData->lines) {
-    //     auto line = lineEntry.second;
-    //     auto start = cadData->points[line->start];
-    //     auto end = cadData->points[line->end];
 
-    //     glVertex3f(start->x, start->y, start->z);
-    //     glVertex3f(end->x, end->y, end->z);
-    // }
-
-    // for (const auto &loop : cadData->lineLoops) {
-    //     for (size_t i = 0; i < loop.second->lines.size(); ++i) {
-    //         int lineId = loop.second->lines[i];
-    //         auto line = cadData->lines[lineId];
-    //         auto start = cadData->points[line->start];
-    //         auto end = cadData->points[line->end];
-
-    //         glVertex3f(start->x, start->y, start->z);
-    //         glVertex3f(end->x, end->y, end->z);
-    //     }
-    // }
-
-    // glEnd();
 
 }
 

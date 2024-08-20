@@ -8,8 +8,8 @@
 
 using namespace std;
 
-CustomButton::CustomButton(const map<string, string>& config, QWidget* parent)
-    : QToolButton(parent), config(config) {
+CustomButton::CustomButton(MainWindow *mainWindow, const map<string, string>& config, QWidget* parent)
+    : QToolButton(parent), config(config), mainWindow(mainWindow) {
     // Initialize button text and other properties
     this->setText(QString::fromStdString(config.at("type") +"\n"+ config.at("desc")));
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
@@ -39,7 +39,7 @@ void CustomButton::openDialog() {
         }
     }
     else if(config["moduleType"]=="loadoctree"){
-        LoadoctreeDialog dialog(&config, this);
+        LoadoctreeDialog dialog(mainWindow, &config, this);
         if (dialog.exec() == QDialog::Accepted) {
             setConfig(dialog.getValues());
         }

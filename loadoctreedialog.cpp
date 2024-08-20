@@ -2,17 +2,23 @@
 #include "ui_loadoctreedialog.h"
 #include "refinementdialog.h"
 
-LoadoctreeDialog::LoadoctreeDialog(map<string, string>* values, QWidget *parent)
+LoadoctreeDialog::LoadoctreeDialog(MainWindow *mainWindow,map<string, string>* values, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoadoctreeDialog)
     , values(values)
+    , mainWindow(mainWindow)
 {
     ui->setupUi(this);
     connect(ui->btnAdd, &QPushButton::clicked, this, &LoadoctreeDialog::onAddBtnClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &LoadoctreeDialog::onRemoveBtnClicked);
     connect(ui->btnSave, &QPushButton::clicked, this, &LoadoctreeDialog::onSaveBtnClicked);
     connect(ui->btnCancel, &QPushButton::clicked, this, &QDialog::reject);
+    connect(ui->listRefinement, &QListWidget::itemClicked, this, &LoadoctreeDialog::onItemClicked);
 
+    // Connect dialog's signal to MainWindow's slot directly within Dialog
+    if (mainWindow) {
+        connect(this, &LoadoctreeDialog::itemSelected, mainWindow, &MainWindow::drawRefinement);
+    }
 
     // Ensure that values is not nullptr
     if (values) {
@@ -45,6 +51,10 @@ LoadoctreeDialog::~LoadoctreeDialog()
     delete ui;
 }
 
+void LoadoctreeDialog::onItemClicked(QListWidgetItem *item) {
+    // Emit the text of the clicked item
+    emit itemSelected(item->text());
+}
 void LoadoctreeDialog::onAddBtnClicked(){
     RefinementDialog dialog(this);
     if (dialog.exec() == QDialog::Accepted) {
