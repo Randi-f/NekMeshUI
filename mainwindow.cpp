@@ -144,10 +144,12 @@ void MainWindow::process(){
     QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
     ui->tableSource->setItem(0, 1, item);
     if(nekMeshObjectPtr->mesh->m_cad){
-        ui->tableSource->setItem(0, 0, new QTableWidgetItem("something"));
+        ui->tableSource->setItem(0, 0, new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->m_cad->GetNumVerts())));
+        ui->tableSource->setItem(0, 2, new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->m_cad->GetNumSurf())));
     }
     else{
         ui->tableSource->setItem(0, 0, new QTableWidgetItem("no cad detected"));
+        ui->tableSource->setItem(0, 2, new QTableWidgetItem("no cad detected"));
     }
     glWidget->setMesh(nekMeshObjectPtr->mesh);
     glWidget->update();

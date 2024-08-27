@@ -3,11 +3,6 @@
 #include <QOpenGLBuffer>
 #include <QOpenGLVertexArrayObject>
 #include <QMouseEvent>
-
-#include "NekMeshObject.h"
-#include "GeoParser.h"
-
-
 #include <LibUtilities/BasicConst/GitRevision.h>
 #include <LibUtilities/BasicUtils/Timer.h>
 #include <boost/algorithm/string.hpp>
@@ -15,11 +10,12 @@
 #include <boost/format.hpp>
 #include <boost/program_options.hpp>
 #include <string>
-
 #include <NekMesh/Module/Module.h>
-
 #include <map>
 #include <cmath>  // for abs
+
+#include "NekMeshObject.h"
+#include "GeoParser.h"
 
 GLWidget::GLWidget(QWidget *parent)
     : QOpenGLWidget(parent), rotationX(0.0f), rotationY(0.0f), scaleFactor(1.0f),
@@ -237,6 +233,7 @@ void GLWidget::initializeGL()
 {
     initializeOpenGLFunctions();
     glEnable(GL_DEPTH_TEST);    // 启用深度测试
+    glClearColor(0.5f, 0.5f, 0.5f, 1.0f); // 灰色背景
 }
 
 void GLWidget::resizeGL(int w, int h)
@@ -274,6 +271,9 @@ void GLWidget::paintGL()
 
     QMatrix4x4 mvp = projection * modelView;    // 计算模型视图投影矩阵
     glLoadMatrixf(mvp.constData()); // 加载模型视图投影矩阵到OpenGL
+
+
+
 
     // drawCube();
     // drawCAD(mesh);
@@ -390,12 +390,17 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
     glBegin(GL_LINES);
     if (!mesh->m_edgeSet.empty()) {
         qDebug() << "draw the mesh";
+        cout << mesh->m_element.empty() << endl;
         for (const auto& edgeSharedPtr : mesh->m_edgeSet) {
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n1->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n1->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n1->m_z));
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n2->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n2->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n2->m_z));
         }
     } else {
-        std::cout << "No detected Mesh" << std::endl;
+        std::cout << "Mesh has an empty edge set" << std::endl;
+        cout << mesh->m_edgeSet.empty() << endl;
+        cout << mesh->m_faceSet.empty() << endl;
+        cout << mesh->m_vertexSet.empty() << endl;
+        cout << mesh->m_element.empty() << endl;
     }
 
 

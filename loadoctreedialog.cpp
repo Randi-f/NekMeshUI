@@ -2,6 +2,7 @@
 #include "ui_loadoctreedialog.h"
 #include "refinementdialog.h"
 
+
 LoadoctreeDialog::LoadoctreeDialog(MainWindow *mainWindow,map<string, string>* values, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoadoctreeDialog)
@@ -33,6 +34,15 @@ LoadoctreeDialog::LoadoctreeDialog(MainWindow *mainWindow,map<string, string>* v
         }
         if (values->find("EPS") != values->end()) {
             ui->textEPS->setText(QString::fromStdString((*values)["EPS"]));
+        }
+        if (values->find("refinement") != values->end()) {
+            // 按照 ':' 分割字符串
+            QString qStr = QString::fromStdString((*values)["refinement"]);
+            QStringList items = qStr.split(':');
+            // 将分割后的字符串添加到 QListWidget 中
+            for (const QString &item : items) {
+                ui->listRefinement->addItem(item);
+            }
         }
         if (values->find("curve_refinement") != values->end()) {
             QString curve_refinement = QString::fromStdString((*values)["curve_refinement"]);
@@ -92,5 +102,6 @@ void LoadoctreeDialog::onSaveBtnClicked() {
     }
     QString concatenatedText = items.join(":");  // You can change the delimiter here if needed
     qDebug() << concatenatedText;
+    (*values)["refinement"] = concatenatedText.toStdString();
     accept();
 }
