@@ -16,6 +16,10 @@ public:
     map<string, string> getConfig() const;
     void setConfig(const map<string, string>& newConfig);
     void updateBtnName();
+    bool isSelected() const
+    {
+        return isChecked();  // 返回是否被选中
+    }
 
 private slots:
     void onClicked();

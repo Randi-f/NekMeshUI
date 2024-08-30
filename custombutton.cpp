@@ -13,7 +13,7 @@ CustomButton::CustomButton(MainWindow *mainWindow, const map<string, string>& co
     // Initialize button text and other properties
     this->setText(QString::fromStdString(config.at("type") +"\n"+ config.at("desc")));
     this->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Fixed);
-
+    setCheckable(true);  // 启用选中状态
     connect(this, &QToolButton::clicked, this, &CustomButton::onClicked);
 }
 

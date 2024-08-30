@@ -50,11 +50,14 @@ MainWindow::MainWindow(QWidget *parent)
     // Panel
     connect(ui->btnAdd, &QPushButton::clicked, this, &MainWindow::onAddProcessModuleBtnClicked);
     connect(ui->btnRunAndSave, &QPushButton::clicked, this, &MainWindow::onRunAndSaveBtnClicked);
+    connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::handleDeleteButton);
 
     connect(ui->actionmsh, &QAction::triggered, this, [this]() { importCertainFile('0'); });
     connect(ui->actionmcf, &QAction::triggered, this, [this]() { importCertainFile('1'); });
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::process);
     ui->actionRun->setShortcut(QKeySequence("Ctrl+R"));
+
+
 
 }
 
@@ -63,6 +66,20 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::handleDeleteButton()
+{
+    // 遍历 QButtonGroup 中的按钮并删除被选中的按钮
+    QList<QAbstractButton*> buttons = btnGroup->buttons();
+    for (auto button : buttons)
+    {
+        CustomButton *customButton = qobject_cast<CustomButton*>(button);
+        if (customButton && customButton->isChecked())  // 假设 CustomButton 类有 isChecked() 方法
+        {
+            btnGroup->removeButton(customButton);  // 从 QButtonGroup 中移除按钮
+            delete customButton;  // 删除按钮
+        }
+    }
+}
 void MainWindow::drawRefinement(const QString &itemText){
     QStringList items = itemText.split(',');
     vector<float> floatValues;

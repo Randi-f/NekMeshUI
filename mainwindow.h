@@ -9,6 +9,7 @@
 #include "NekMeshObject.h"
 #include "glwidget.h"
 
+
 // Forward declaration
 class SourceWindow;
 class OptionsWindow;
@@ -56,6 +57,7 @@ private slots:
 
     void onAddProcessModuleBtnClicked();
     void onRunAndSaveBtnClicked();
+    void handleDeleteButton();  // 槽函数，用于处理删除按钮的点击事件
 
 };
 
