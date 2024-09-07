@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Refinement</string>
   </property>
   <widget class="QWidget" name="gridLayoutWidget">
    <property name="geometry">
@@ -19,7 +19,7 @@
      <x>30</x>
      <y>10</y>
      <width>151</width>
-     <height>301</height>
+     <height>302</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout">

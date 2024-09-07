@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnBrowseFile, &QPushButton::clicked, this, &MainWindow::browseFile);
 
     // Panel
+    connect(ui->btnOutputPath, &QPushButton::clicked, this, &MainWindow::openDirectory);
     connect(ui->btnAdd, &QPushButton::clicked, this, &MainWindow::onAddProcessModuleBtnClicked);
     connect(ui->btnRunAndSave, &QPushButton::clicked, this, &MainWindow::onRunAndSaveBtnClicked);
     connect(ui->btnRemove, &QPushButton::clicked, this, &MainWindow::handleDeleteButton);
@@ -133,8 +134,8 @@ void MainWindow::onRunAndSaveBtnClicked(){
             }
         }
     }
-
-    nekMeshObjectPtr->addOutputModule("default",ui->comboOutputFileType->currentText().toStdString());
+    QMessageBox::information(this, "hint", "file stored at "+ui->lineOutputPath->text());
+    nekMeshObjectPtr->addOutputModule(ui->lineOutputPath->text().toStdString(),ui->comboOutputFileType->currentText().toStdString(),ui->lineOutputName->text().toStdString());
     nekMeshObjectPtr->process();
     glWidget->setMesh(nekMeshObjectPtr->mesh);
     glWidget->update();
@@ -227,7 +228,7 @@ void MainWindow::onRunBtnClicked(){
         }
         else if(item->text().toStdString()=="output"){
             QStandardItem *outputType = item->child(0);
-            nekMeshObjectPtr->addOutputModule("default",outputType->text().toStdString());
+            nekMeshObjectPtr->addOutputModule("/Users/shihan/Desktop",outputType->text().toStdString(), "default");
             qDebug()<< "output loaded:" << outputType->text();
             QMessageBox::information(this, "hint", "file stored at Desktop!");
         }
@@ -349,6 +350,20 @@ void MainWindow::importCertainFile(char type)
     }
 }
 
+// output file path
+void MainWindow::openDirectory(){
+    QString dir = QFileDialog::getExistingDirectory(this,
+                                                    "Select Directory",
+                                                    "/home",  // Default directory
+                                                    QFileDialog::ShowDirsOnly | QFileDialog::DontResolveSymlinks);
+
+    if (!dir.isEmpty()) {
+        ui->lineOutputPath->setText(dir);
+        qDebug() << "Selected directory path: " << dir;
+    } else {
+        qDebug() << "No directory selected.";
+    }
+}
 // import btn on the Source Panel
 void MainWindow::browseFile()
 {

@@ -44,6 +44,7 @@ private:
     void importFile();
     void importCertainFile(char type);
     void browseFile();
+    void openDirectory();
     void process();
 
 public slots:

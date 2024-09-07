@@ -23,7 +23,7 @@ public:
     ~NekMeshObject(){
     }
     void addInputModule(string inputFile);
-    void addOutputModule(string filePath, string fileType);
+    void addOutputModule(string filePath, string fileType, string fileName);
     void addProcessModule(map<string, string>values);
     void process();
 

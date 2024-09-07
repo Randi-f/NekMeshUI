@@ -166,12 +166,12 @@ void NekMeshObject::addProcessModule(map<string, string>values){
 void NekMeshObject::addInputModule(string inputFile){
     const string suffix = ".geo";
     if(inputFile.compare(inputFile.length() - suffix.length(), suffix.length(), suffix) == 0){
-        cout << "detect CAD file: " << inputFile << endl;;
+        // cout << "detect CAD file: " << inputFile << endl;
         map<string, string>values;
         values["moduleType"]="loadcad";
         values["filename"] = inputFile;
         values["voidpoints"] = "";
-        values["2D"] = "true";
+        values["2D"] = "true"; // to do: distinguish 2D and 3D here
         values["NACA"] = "false";
         addProcessModule(values);
     }
@@ -198,15 +198,16 @@ void NekMeshObject::addInputModule(string inputFile){
 
 }
 
-void NekMeshObject::addOutputModule(string filePath, string fileType){
+void NekMeshObject::addOutputModule(string filePath, string fileType, string fileName){
     ModuleKey out_module;
     out_module.first=eOutputModule;
     out_module.second=fileType;
     ModuleSharedPtr mod1 = GetModuleFactory().CreateInstance(out_module, mesh);
     mod1->SetLogger(log);
     modules.push_back(mod1);
-    string fileName = "/Users/shihan/Desktop/output."+fileType;
-    mod1->RegisterConfig("outfile", fileName);
+    string outputFileName = filePath + "/" + fileName + "." + fileType;
+    // cout << outputFileName << endl;
+    mod1->RegisterConfig("outfile", outputFileName);
     // Ensure configuration options have been set.
     mod1->SetDefaults();
 }

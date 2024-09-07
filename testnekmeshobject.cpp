@@ -48,7 +48,7 @@ void TestNekMeshObject::testAddProcessModule(){
 
 void TestNekMeshObject::testAddOutputModule(){
     nekMeshObjectPtr = std::make_shared<NekMeshObject>();
-    nekMeshObjectPtr->addOutputModule("default", "xml");
+    nekMeshObjectPtr->addOutputModule("/Users/shihan/Desktop", "xml", "default");
     QCOMPARE(nekMeshObjectPtr->modules[0]->GetModuleName(),"OutputNekpp");
 }
 
