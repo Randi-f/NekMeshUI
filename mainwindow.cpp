@@ -12,6 +12,8 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QToolButton>
+#include <QRegularExpressionValidator>  // 替换为正则表达式验证器
+
 
 #include "SelectionDialog.h"
 #include "glwidget.h"
@@ -38,6 +40,30 @@ MainWindow::MainWindow(QWidget *parent)
     glWidget->setMesh(nekMeshObjectPtr->mesh);
 
     ui->tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
+
+    // injection for output file name
+    QRegularExpression regExp("[^\\\\/:*?\"<>|]+"); // 检测文件名不能包含 \ / : * ? " < > |
+    QRegularExpressionValidator *validator = new QRegularExpressionValidator(regExp, this);
+    ui->lineOutputName->setValidator(validator);
+
+    // 当文本改变时，连接槽函数
+    connect(ui->lineOutputName, &QLineEdit::textChanged, [=]() {
+        QString text = ui->lineOutputName->text();
+        int pos = 0;
+        QPalette palette = ui->lineOutputName->palette();
+
+        if (validator->validate(text, pos) != QValidator::Acceptable) {
+            // 如果输入无效，设置背景为红色
+            palette.setColor(QPalette::Base, Qt::red);
+            ui->lineOutputName->setPalette(palette);
+            ui->lineOutputName->setToolTip("File name should not contain characters like \\/:*?\"<>|");
+
+        } else {
+            // 如果输入有效，恢复默认背景颜色
+            palette.setColor(QPalette::Base, Qt::white);
+            ui->lineOutputName->setPalette(palette);
+        }
+    });
 
     connect(ui->btn_addModule, &QPushButton::clicked, this, &MainWindow::onAddModuleBtnClicked);
     connect(ui->btn_deleteModule, &QPushButton::clicked, this, &MainWindow::onDeleteModuleBtnClicked);
@@ -119,6 +145,8 @@ void MainWindow::drawRefinement(const QString &itemText){
 }
 // Output Panel, save and run btn
 void MainWindow::onRunAndSaveBtnClicked(){
+
+
     // need to add the input module with the process module, otherwise some config will not be correct?
     nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
 
