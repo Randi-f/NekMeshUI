@@ -1,8 +1,12 @@
 #include "testnekmeshobject.h"
 
 void TestNekMeshObject::initTestCase() {
+    // Create a logger.
+    auto logOutput = std::make_shared<StreamOutput>(std::cout);
+    // Logger log(logOutput, INFO);
+    auto log = std::make_shared<Logger>(logOutput, INFO);
     // Initialization code here
-    nekMeshObjectPtr = make_shared<NekMeshObject>();
+    nekMeshObjectPtr = make_shared<NekMeshObject>(log);
 }
 
 void TestNekMeshObject::cleanupTestCase() {
@@ -29,14 +33,22 @@ void TestNekMeshObject::testAddInputModule() {
 }
 
 void TestNekMeshObject::testDetectCADFile(){
-    nekMeshObjectPtr = std::make_shared<NekMeshObject>();
+    // Create a logger.
+    auto logOutput = std::make_shared<StreamOutput>(std::cout);
+    // Logger log(logOutput, INFO);
+    auto log = std::make_shared<Logger>(logOutput, INFO);
+    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);
     string fileName = "/Users/shihan/Desktop/t106a.geo";
     nekMeshObjectPtr->addInputModule(fileName);
     QCOMPARE(nekMeshObjectPtr->modules[0]->GetModuleName(),"LoadCAD");
 }
 
 void TestNekMeshObject::testAddProcessModule(){
-    nekMeshObjectPtr = std::make_shared<NekMeshObject>();
+    // Create a logger.
+    auto logOutput = std::make_shared<StreamOutput>(std::cout);
+    // Logger log(logOutput, INFO);
+    auto log = std::make_shared<Logger>(logOutput, INFO);
+    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);
     map<string, string>values;
     values["moduleType"]="peralign";
     values["surf1"]="3";
@@ -47,7 +59,11 @@ void TestNekMeshObject::testAddProcessModule(){
 }
 
 void TestNekMeshObject::testAddOutputModule(){
-    nekMeshObjectPtr = std::make_shared<NekMeshObject>();
+    // Create a logger.
+    auto logOutput = std::make_shared<StreamOutput>(std::cout);
+    // Logger log(logOutput, INFO);
+    auto log = std::make_shared<Logger>(logOutput, INFO);
+    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);
     nekMeshObjectPtr->addOutputModule("/Users/shihan/Desktop", "xml", "default");
     QCOMPARE(nekMeshObjectPtr->modules[0]->GetModuleName(),"OutputNekpp");
 }

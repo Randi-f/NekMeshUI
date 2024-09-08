@@ -23,8 +23,8 @@ BlDialog::BlDialog(map<string, string>* values, QWidget *parent)
             string blsurfs = (*values)["blsurfs"];
             size_t end = blsurfs.find(','); // only one ",", so use if not while
             if (end != std::string::npos) {
-                ui->combo1->setCurrentText(QString::fromStdString(blsurfs.substr(0, end)));
-                ui->combo2->setCurrentText(QString::fromStdString(blsurfs.substr(end+1)));
+                ui->lineSurf1->setText(QString::fromStdString(blsurfs.substr(0, end)));
+                ui->lineSurf2->setText(QString::fromStdString(blsurfs.substr(end+1)));
             }
         }
         if (values->find("order") != values->end()) {
@@ -45,8 +45,8 @@ void BlDialog::onSaveBtnClicked()
 {
     (*values)["desc"] = ui->textDesc->text().toStdString();
     (*values)["bllayers"] = ui->textBllayers->text().toStdString();
-    string surf1 = ui->combo1->currentText().toStdString();
-    string surf2 = ui->combo2->currentText().toStdString();
+    string surf1 = ui->lineSurf1->text().toStdString();
+    string surf2 = ui->lineSurf2->text().toStdString();
     (*values)["blsurfs"] = surf1 + "," + surf2;
     (*values)["order"] = ui->textOrder->text().toStdString();
     (*values)["blprog"] = ui->textBlprog->text().toStdString();

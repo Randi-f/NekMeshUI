@@ -25,7 +25,7 @@ class MainWindow : public QMainWindow
     Q_OBJECT
 
 public:
-    MainWindow(QWidget *parent = nullptr);
+    MainWindow(QWidget *parent = nullptr, std::shared_ptr<Logger> log=nullptr);
     ~MainWindow();
     map<string, string> allParams;
 

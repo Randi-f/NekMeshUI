@@ -16,7 +16,7 @@
 #include <NekMesh/Module/Module.h>
 
 #include <QDebug>
-
+#include <QMessageBox>
 using namespace std;
 using namespace Nektar::NekMesh;
 
@@ -36,11 +36,12 @@ void NekMeshObject::process(){
         }
         catch (NekMeshError &e)
         {
+            QMessageBox::information(nullptr, "Error", "This is an error message.");
             cout << "an error occurred. Please try again." << endl;
         }
         t.Stop();
 
-        log.SetPrefix(modules[i]->GetModuleName());
+        log->SetPrefix(modules[i]->GetModuleName());
 
     }
 
@@ -52,7 +53,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
     if(values["moduleType"]=="peralign"){
         process_module.second="peralign";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         modp->RegisterConfig("surf1", values["surf1"]);
         modp->RegisterConfig("surf2", values["surf2"]);
@@ -66,7 +67,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         mesh->m_nummode  = 5;
         process_module.second="loadcad";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         modp->RegisterConfig("filename", values["filename"]);
         modp->RegisterConfig("voidpoints", values["voidpoints"]);
@@ -81,7 +82,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
     else if(values["moduleType"]=="loadoctree"){
         process_module.second="loadoctree";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         modp->RegisterConfig("mindel", values["MinDelta"]);
         modp->RegisterConfig("maxdel", values["MaxDelta"]);
@@ -103,7 +104,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         mesh->m_expDim   = 2;
         mesh->m_spaceDim = 2;
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
 
         if(values["makeBL"]!="false"){
@@ -124,7 +125,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
     else if(values["moduleType"]=="volumemesh"){
         process_module.second="volumemesh";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         if(values["makeBL"]=="true"){
             modp->RegisterConfig("blsurfs", values["blsurfs"]);
@@ -139,7 +140,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
     else if(values["moduleType"]=="hosurface"){
         process_module.second="hosurface";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         if(values["surfopti"]=="true"){
             modp->RegisterConfig("no_opti", "");
@@ -151,7 +152,7 @@ void NekMeshObject::addProcessModule(map<string, string>values){
     else if(values["moduleType"]=="bl"){
         process_module.second="bl";
         ModuleSharedPtr modp = GetModuleFactory().CreateInstance(process_module, mesh);
-        modp->SetLogger(log);
+        modp->SetLogger(*log);
         modules.push_back(modp);
         modp->RegisterConfig("layers", values["bllayers"]);
         modp->RegisterConfig("surf", values["blsurfs"]);
@@ -166,7 +167,6 @@ void NekMeshObject::addProcessModule(map<string, string>values){
 void NekMeshObject::addInputModule(string inputFile){
     const string suffix = ".geo";
     if(inputFile.compare(inputFile.length() - suffix.length(), suffix.length(), suffix) == 0){
-        // cout << "detect CAD file: " << inputFile << endl;
         map<string, string>values;
         values["moduleType"]="loadcad";
         values["filename"] = inputFile;
@@ -190,7 +190,7 @@ void NekMeshObject::addInputModule(string inputFile){
         }
         // Create module.
         ModuleSharedPtr mod = GetModuleFactory().CreateInstance(in_module, mesh);
-        mod->SetLogger(log);
+        mod->SetLogger(*log);
         mod->RegisterConfig("infile", inputFile);
         mod->SetDefaults();
         modules.push_back(mod);
@@ -203,10 +203,10 @@ void NekMeshObject::addOutputModule(string filePath, string fileType, string fil
     out_module.first=eOutputModule;
     out_module.second=fileType;
     ModuleSharedPtr mod1 = GetModuleFactory().CreateInstance(out_module, mesh);
-    mod1->SetLogger(log);
+    mod1->SetLogger(*log);
     modules.push_back(mod1);
     string outputFileName = filePath + "/" + fileName + "." + fileType;
-    // cout << outputFileName << endl;
+
     mod1->RegisterConfig("outfile", outputFileName);
     // Ensure configuration options have been set.
     mod1->SetDefaults();

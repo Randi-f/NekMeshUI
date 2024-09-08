@@ -1,3 +1,5 @@
+#include <QIntValidator>
+#include <QMessageBox>
 #include "peraligndialog.h"
 #include "ui_peraligndialog.h"
 
@@ -12,7 +14,9 @@ PerAlignDialog::PerAlignDialog(map<string, string>* values, QWidget *parent)
 
     connect(ui->btnSave, &QPushButton::clicked, this, &PerAlignDialog::onSaveBtnClicked);
     connect(ui->btnCancel, &QPushButton::clicked, this, &QDialog::reject);
-
+    QIntValidator *intValidator = new QIntValidator(this);
+    ui->lineSurf1->setValidator(intValidator); // 设置为只能输入整数
+    ui->lineSurf2->setValidator(intValidator); // 设置为只能输入整数
 
     // Ensure that values is not nullptr
     if (values) {
@@ -20,10 +24,10 @@ PerAlignDialog::PerAlignDialog(map<string, string>* values, QWidget *parent)
             ui->lineDescription->setText(QString::fromStdString((*values)["desc"]));
         }
         if (values->find("surf1") != values->end()) {
-            ui->comboBox->setCurrentText(QString::fromStdString((*values)["surf1"]));
+            ui->lineSurf1->setText(QString::fromStdString((*values)["surf1"]));
         }
         if (values->find("surf2") != values->end()) {
-            ui->comboBox_2->setCurrentText(QString::fromStdString((*values)["surf2"]));
+            ui->lineSurf2->setText(QString::fromStdString((*values)["surf2"]));
         }
         if (values->find("dir") != values->end()) {
             QString dir = QString::fromStdString((*values)["dir"]);
@@ -52,10 +56,21 @@ std::map<std::string, std::string>& PerAlignDialog::getValues() {
 }
 
 void PerAlignDialog::onSaveBtnClicked() {
+    QString text = ui->lineSurf1->text();
+    // 检查是否为空
+    if (text.isEmpty()) {
+        QMessageBox::information(this,"WARNING","empty input for surface 1!");
+        return ;
+    }
+    text = ui->lineSurf2->text();
+    if (text.isEmpty()) {
+        QMessageBox::information(this,"WARNING","empty input for surface 2!");
+        return ;
+    }
     // Modify the map through the pointer
     (*values)["desc"] = ui->lineDescription->text().toStdString();
-    (*values)["surf1"] = ui->comboBox->currentText().toStdString();
-    (*values)["surf2"] = ui->comboBox_2->currentText().toStdString();
+    (*values)["surf1"] = ui->lineSurf1->text().toStdString();
+    (*values)["surf2"] = ui->lineSurf2->text().toStdString();
 
     if (ui->radioBtnX->isChecked()) {
         (*values)["dir"] = "x";

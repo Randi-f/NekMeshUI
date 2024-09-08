@@ -23,7 +23,7 @@
 #include "peraligndialog.h"
 #include "custombutton.h"
 
-MainWindow::MainWindow(QWidget *parent)
+MainWindow::MainWindow(QWidget *parent, std::shared_ptr<Logger> log)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
@@ -33,7 +33,8 @@ MainWindow::MainWindow(QWidget *parent)
 
     ui->VLProcessPanel->setAlignment(Qt::AlignTop);
 
-    nekMeshObjectPtr = std::make_shared<NekMeshObject>();
+
+    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);
 
     glWidget = new GLWidget(ui->frame);
     glWidget->setGeometry(0, 0, ui->frame->width(), ui->frame->height());
@@ -192,6 +193,8 @@ void MainWindow::process(){
     if(nekMeshObjectPtr->mesh->m_cad){
         ui->tableSource->setItem(0, 0, new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->m_cad->GetNumVerts())));
         ui->tableSource->setItem(0, 2, new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->m_cad->GetNumSurf())));
+        // CADSurfSharedPtr surf = m_cad->GetSurf(0);
+
     }
     else{
         ui->tableSource->setItem(0, 0, new QTableWidgetItem("no cad detected"));

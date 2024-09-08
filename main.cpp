@@ -19,10 +19,11 @@
 
 
 
-void mainFunction(int argc, char *argv[]){
+void mainFunction(int argc, char *argv[], std::shared_ptr<Logger> log){
     // main function
+
     QApplication a(argc, argv);
-    MainWindow w;
+    MainWindow w(nullptr,log);
     w.show();
     a.exec();
 }
@@ -59,8 +60,11 @@ void testCAD(int argc, char *argv[]){
 
 int main(int argc, char *argv[])
 {
-
-    mainFunction(argc, argv);
+    // Create a logger.
+    auto logOutput = std::make_shared<StreamOutput>(std::cout);
+    // Logger log(logOutput, INFO);
+    auto log = std::make_shared<Logger>(logOutput, INFO);
+    mainFunction(argc, argv, log);
     // testCAD(argc, argv);
     return 0;
 
