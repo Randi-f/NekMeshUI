@@ -12,7 +12,7 @@
 #include "testnekmeshobject.h"
 #include <QDir> // test
 #include <QDebug>
-
+#include <QMessageBox>
 // #include <QApplication>
 // #include <QMainWindow>
 // #include "ui_simplemainwindow.h"
@@ -65,8 +65,17 @@ int main(int argc, char *argv[])
     // Logger log(logOutput, INFO);
     auto log = std::make_shared<Logger>(logOutput, INFO);
     mainFunction(argc, argv, log);
-    // testCAD(argc, argv);
+    if (log->GetLogLevel() == WARNING) {
+        QString message = "This is a warning message from logger.";
+        QMessageBox::warning(nullptr, "Warning", message);
+    }
+
+
+
     return 0;
+
+    // testCAD(argc, argv);
+
 
     // QApplication app(argc, argv);
     // map<string, string> values;

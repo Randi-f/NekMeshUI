@@ -1,5 +1,7 @@
 #include "testnekmeshobject.h"
 
+#include <QSignalSpy>
+#include <QMessageBox>
 void TestNekMeshObject::initTestCase() {
     // Create a logger.
     auto logOutput = std::make_shared<StreamOutput>(std::cout);
@@ -30,17 +32,6 @@ void TestNekMeshObject::testAddInputModule() {
     string fileName = "/Users/shihan/Desktop/naca.mcf";
     nekMeshObjectPtr->addInputModule(fileName);
     QCOMPARE(nekMeshObjectPtr->modules.size(), 1);
-}
-
-void TestNekMeshObject::testDetectCADFile(){
-    // Create a logger.
-    auto logOutput = std::make_shared<StreamOutput>(std::cout);
-    // Logger log(logOutput, INFO);
-    auto log = std::make_shared<Logger>(logOutput, INFO);
-    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);
-    string fileName = "/Users/shihan/Desktop/t106a.geo";
-    nekMeshObjectPtr->addInputModule(fileName);
-    QCOMPARE(nekMeshObjectPtr->modules[0]->GetModuleName(),"LoadCAD");
 }
 
 void TestNekMeshObject::testAddProcessModule(){

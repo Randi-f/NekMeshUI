@@ -21,7 +21,6 @@ private slots:
     void testExample();
     void testAnotherFunction();
     void testAddInputModule();
-    void testDetectCADFile();
     void testAddProcessModule();
     void testAddOutputModule();
 };

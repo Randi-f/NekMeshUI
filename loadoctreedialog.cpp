@@ -2,7 +2,7 @@
 #include "ui_loadoctreedialog.h"
 #include "refinementdialog.h"
 
-
+#include <QDoubleValidator>
 LoadoctreeDialog::LoadoctreeDialog(MainWindow *mainWindow,map<string, string>* values, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::LoadoctreeDialog)
@@ -20,6 +20,12 @@ LoadoctreeDialog::LoadoctreeDialog(MainWindow *mainWindow,map<string, string>* v
     if (mainWindow) {
         connect(this, &LoadoctreeDialog::itemSelected, mainWindow, &MainWindow::drawRefinement);
     }
+
+    QDoubleValidator *validator = new QDoubleValidator(-1000.0, 1000.0, 3, this);
+    validator->setNotation(QDoubleValidator::StandardNotation);//标准浮点表示法
+    ui->textEPS->setValidator(validator);
+    ui->textMax->setValidator(validator);
+    ui->textMin->setValidator(validator);
 
     // Ensure that values is not nullptr
     if (values) {
@@ -87,6 +93,7 @@ std::map<std::string, std::string>& LoadoctreeDialog::getValues() {
 }
 
 void LoadoctreeDialog::onSaveBtnClicked() {
+    mainWindow->clearRefinement();
     // Modify the map through the pointer
     (*values)["desc"] = ui->textDesc->text().toStdString();
     (*values)["MinDelta"] = ui->textMin->text().toStdString();

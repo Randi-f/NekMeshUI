@@ -40,7 +40,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <widget class="QWidget" name="tabSource">
      <attribute name="title">
@@ -298,7 +298,7 @@
          <x>0</x>
          <y>0</y>
          <width>180</width>
-         <height>290</height>
+         <height>298</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -473,6 +473,7 @@
     </widget>
     <addaction name="menuimport"/>
     <addaction name="actionexport"/>
+    <addaction name="actionnaca"/>
    </widget>
    <widget class="QMenu" name="menuTool">
     <property name="title">
@@ -521,6 +522,16 @@
   <action name="actionRun">
    <property name="text">
     <string>Run</string>
+   </property>
+  </action>
+  <action name="actionnew">
+   <property name="text">
+    <string>new</string>
+   </property>
+  </action>
+  <action name="actionnaca">
+   <property name="text">
+    <string>naca</string>
    </property>
   </action>
  </widget>

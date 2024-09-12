@@ -28,6 +28,8 @@ public:
     MainWindow(QWidget *parent = nullptr, std::shared_ptr<Logger> log=nullptr);
     ~MainWindow();
     map<string, string> allParams;
+    void clearRefinement();
+    void mainWindowUpdate();
 
 private:
     Ui::MainWindow *ui;
@@ -38,14 +40,17 @@ private:
     QStandardItemModel* table_model;
 
     std::shared_ptr<NekMeshObject> nekMeshObjectPtr;
+    // std::map<std::string,std::string> allValues;
 
     QButtonGroup *btnGroup;
-
+    std::shared_ptr<Logger> log;
     void importFile();
     void importCertainFile(char type);
     void browseFile();
     void openDirectory();
     void process();
+    void useNacaExample();
+
 
 public slots:
     void drawRefinement(const QString &itemText);

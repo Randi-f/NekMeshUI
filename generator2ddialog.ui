@@ -31,7 +31,11 @@
      </widget>
     </item>
     <item row="2" column="1">
-     <widget class="QLineEdit" name="textBlcurves"/>
+     <widget class="QLineEdit" name="textBlcurves">
+      <property name="text">
+       <string>5,6</string>
+      </property>
+     </widget>
     </item>
     <item row="2" column="0">
      <widget class="QLabel" name="label_2">
@@ -41,7 +45,11 @@
      </widget>
     </item>
     <item row="3" column="1">
-     <widget class="QLineEdit" name="textBlthick"/>
+     <widget class="QLineEdit" name="textBlthick">
+      <property name="text">
+       <string>0.07</string>
+      </property>
+     </widget>
     </item>
     <item row="4" column="0">
      <widget class="QCheckBox" name="checkAdjust">

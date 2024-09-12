@@ -1,6 +1,7 @@
 #include "bldialog.h"
 #include "ui_bldialog.h"
-
+#include <QIntValidator>
+#include <QMessageBox>
 BlDialog::BlDialog(map<string, string>* values, QWidget *parent)
     : QDialog(parent)
     , ui(new Ui::BlDialog)
@@ -9,6 +10,13 @@ BlDialog::BlDialog(map<string, string>* values, QWidget *parent)
     ui->setupUi(this);
     connect(ui->btnSave, &QPushButton::clicked, this, &BlDialog::onSaveBtnClicked);
     connect(ui->btnCancel, &QPushButton::clicked, this, &QDialog::reject);
+
+    QIntValidator *intValidator = new QIntValidator(this);
+    ui->lineSurf1->setValidator(intValidator); // 设置为只能输入整数
+    ui->lineSurf2->setValidator(intValidator);
+    ui->textBllayers->setValidator(intValidator);
+    ui->textBlprog->setValidator(intValidator);
+    ui->textOrder->setValidator(intValidator);
 
     // Ensure that values is not nullptr
     if (values) {

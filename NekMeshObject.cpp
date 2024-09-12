@@ -33,6 +33,7 @@ void NekMeshObject::process(){
             cout << "try process for " << modules[i]->GetModuleName() << endl;
             modules[i]->PrintConfig();
             modules[i]->Process();
+
         }
         catch (NekMeshError &e)
         {
@@ -96,7 +97,6 @@ void NekMeshObject::addProcessModule(map<string, string>values){
         if(values["writeoctree"]=="true"){
             modp->RegisterConfig("writeoctree", "");
         }
-
         modp->SetDefaults();
     }
     else if(values["moduleType"]=="2dgenerator"){
@@ -118,8 +118,6 @@ void NekMeshObject::addProcessModule(map<string, string>values){
                 }
             }
         }
-
-        // Ensure configuration options have been set.
         modp->SetDefaults();
     }
     else if(values["moduleType"]=="volumemesh"){
@@ -165,13 +163,58 @@ void NekMeshObject::addProcessModule(map<string, string>values){
 }
 
 void NekMeshObject::addInputModule(string inputFile){
+    string nacaStr = "naca-";
     const string suffix = ".geo";
-    if(inputFile.compare(inputFile.length() - suffix.length(), suffix.length(), suffix) == 0){
+    if(inputFile.find(nacaStr) != std::string::npos){
+        cout << "use naca example" << endl;
+        QMessageBox::information(nullptr, "Load naca example","NACA configuration: filename 6412, -1.0,-1.0,3.0,1.0,15.0");
         map<string, string>values;
+        values["moduleType"]="loadcad";
+        values["filename"] = "6412";
+        values["voidpoints"] = "";
+        values["2D"] = "true";
+        values["NACA"] = "-1.0,-1.0,3.0,1.0,15.0";
+        addProcessModule(values);
+    }
+    else if(inputFile.compare(inputFile.length() - suffix.length(), suffix.length(), suffix) == 0){
+        map<string, string>values;
+        // 弹出询问框，包含 "Yes", "No", "Cancel" 按钮
+        QMessageBox::StandardButton reply;
+        reply = QMessageBox::question(nullptr, "Detect CAD file, need extra information", "Is this 3D? If yes, please click 'Yes'.",
+                                      QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+
+        // 检查用户按下的按钮
+        if (reply == QMessageBox::Yes) {
+            qDebug("User clicked Yes.");
+            values["2D"] = "false"; // to do: distinguish 2D and 3D here
+        } else if (reply == QMessageBox::No) {
+            qDebug("User clicked No.");
+            values["2D"] = "true";
+        } else {
+            qDebug("User clicked Cancel.");
+            return;
+        }
+
         values["moduleType"]="loadcad";
         values["filename"] = inputFile;
         values["voidpoints"] = "";
-        values["2D"] = "true"; // to do: distinguish 2D and 3D here
+
+        // 弹出询问框，包含 "Yes", "No", "Cancel" 按钮
+        // QMessageBox::StandardButton reply2;
+        // reply2 = QMessageBox::question(nullptr, "Detect CAD file, need extra information", "Is this naca? If yes, please click 'Yes'.",
+        //                               QMessageBox::Yes | QMessageBox::No | QMessageBox::Cancel);
+
+        // 检查用户按下的按钮
+        // if (reply2 == QMessageBox::Yes) {
+        //     qDebug("User clicked Yes.");
+        //     values["NACA"] = "true";
+        // } else if (reply2 == QMessageBox::No) {
+        //     qDebug("User clicked No.");
+        //     values["NACA"] = "false";
+        // } else {
+        //     qDebug("User clicked Cancel.");
+        //     return;
+        // }
         values["NACA"] = "false";
         addProcessModule(values);
     }

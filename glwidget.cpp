@@ -357,30 +357,21 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
             }
         }
-
-
     } else {
         std::cout << "no CAD loaded" << std::endl;
     }
-
-
     glEnd();
-
-
 
     glColor3f(0.0f, 1.0f, 0.0f); // 设置颜色为绿色
     glPointSize(5.0f); // 设置点的大小
     glBegin(GL_POINTS);
     if (mesh->m_cad){
-        // cout << "curve number: " << mesh->m_cad->GetNumCurve() << endl;
         for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
             CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
             vector<CADVertSharedPtr> verts =  curve->GetVertex();
-
             for (size_t i = 0; i < verts.size(); ++i) {
                 std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
-                // cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
             }
         }
     }
@@ -390,19 +381,27 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
     glBegin(GL_LINES);
     if (!mesh->m_edgeSet.empty()) {
         qDebug() << "draw the mesh";
-        // cout << mesh->m_element.empty() << endl;
         for (const auto& edgeSharedPtr : mesh->m_edgeSet) {
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n1->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n1->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n1->m_z));
             glVertex3f(static_cast<GLfloat>(edgeSharedPtr->m_n2->m_x), static_cast<GLfloat>(edgeSharedPtr->m_n2->m_y),  static_cast<GLfloat>(edgeSharedPtr->m_n2->m_z));
         }
     } else {
         std::cout << "Mesh has an empty edge set" << std::endl;
-        // cout << mesh->m_edgeSet.empty() << endl;
-        // cout << mesh->m_faceSet.empty() << endl;
-        // cout << mesh->m_vertexSet.empty() << endl;
-        // cout << mesh->m_element.empty() << endl;
     }
 
+
+    if(!mesh->m_faceSet.empty()){
+        cout << "mesh faceSet not empty" << endl;
+    }
+    else{
+        cout << "mesh faceSet empty!" << endl;
+    }
+
+    if (!mesh->m_spherigonSurfs.empty()) {
+        std::cout << "The m_spherigonSurfs is not empty." << std::endl;
+    } else {
+        std::cout << "The m_spherigonSurfs is  empty." << std::endl;
+    }
 
     if (mesh->m_cad){
         vector<int> index;
@@ -411,6 +410,7 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
             array<Nektar::NekDouble, 3> loc = curve->P(0);
             array<Nektar::NekDouble, 3> loc1 = curve->P(1);
             if(std::abs(loc[0] - loc1[0]) <= 0.001 || std::abs(loc[1] - loc1[1]) <= 0.001){
+                cout << "detect edges" << endl;
                 index.push_back(i);
             }
         }
@@ -420,15 +420,10 @@ void GLWidget::drawMesh(MeshSharedPtr mesh)
             for (size_t i = 0; i < verts.size(); ++i) {
                 std::array<Nektar::NekDouble, 3> loc = verts[i]->GetLoc();
                 glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
-                // cout << loc[0] << ", " << loc[1] <<", " << loc[2] << endl;
-
             }
         }
     }
-
     glEnd();
-
-
 }
 
 void GLWidget::drawCube()
@@ -467,22 +462,7 @@ void GLWidget::drawCAD(MeshSharedPtr mesh){
         std::cout << "EdgeSet is empty." << std::endl;
         glVertex3f( 0, 0,  0); glVertex3f( 0,  0,  0);
     }
-
-
-    // for (int i = 1; i <= mesh->m_cad->GetNumCurve(); i++){
-    //     CADCurveSharedPtr curve = mesh->m_cad->GetCurve(i);
-    //     std::vector<CADVertSharedPtr> verts = curve->GetVertex();
-    //     for (const auto& vert : verts) {
-    //         std::array<Nektar::NekDouble, 3> loc = vert->GetLoc();
-    //         glVertex3f(static_cast<double>(loc[0]), static_cast<double>(loc[1]), static_cast<double>(loc[2]));
-    //     }
-    // }
     glEnd();
-
-
-    // if (!cadData) return;
-
-
 
 }
 

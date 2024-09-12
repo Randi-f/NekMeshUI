@@ -1,6 +1,7 @@
 #include "generator2ddialog.h"
 #include "ui_generator2ddialog.h"
 
+#include <QDoubleValidator>
 Generator2DDialog::Generator2DDialog(map<string, string>* values, QWidget *parent)
     : QDialog(parent), ui(new Ui::Generator2DDialog), values(values)
 {
@@ -13,6 +14,10 @@ Generator2DDialog::Generator2DDialog(map<string, string>* values, QWidget *paren
     connect(ui->checkAdjustAll, &QCheckBox::stateChanged, this, [this](int state) {
         setCheckAdjustState(); // Call the existing slot with the state parameter
     });
+
+    QDoubleValidator *validator = new QDoubleValidator(-1000.0, 1000.0, 3, ui->textBlthick);
+    validator->setNotation(QDoubleValidator::StandardNotation);//标准浮点表示法
+    ui->textBlthick->setValidator(validator); // 设置为只能输入整数
 
     // Ensure that values is not nullptr
     if (values) {

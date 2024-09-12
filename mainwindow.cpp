@@ -26,6 +26,7 @@
 MainWindow::MainWindow(QWidget *parent, std::shared_ptr<Logger> log)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
+    , log(log)
 {
     ui->setupUi(this);
 
@@ -83,15 +84,32 @@ MainWindow::MainWindow(QWidget *parent, std::shared_ptr<Logger> log)
     connect(ui->actionmsh, &QAction::triggered, this, [this]() { importCertainFile('0'); });
     connect(ui->actionmcf, &QAction::triggered, this, [this]() { importCertainFile('1'); });
     connect(ui->actionRun, &QAction::triggered, this, &MainWindow::process);
+    connect(ui->actionView, &QAction::triggered, this, &MainWindow::process);
+    connect(ui->actionnaca, &QAction::triggered, this, &MainWindow::useNacaExample);
+    connect(ui->actionexport, &QAction::triggered, this, &MainWindow::openDirectory);
+
+    // shortcut key
     ui->actionRun->setShortcut(QKeySequence("Ctrl+R"));
-
-
-
+    ui->actionView->setShortcut(QKeySequence("Ctrl+V"));
 }
 
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void MainWindow::mainWindowUpdate(){
+    if (glWidget) {  // Ensure glWidget is valid
+        glWidget->update();
+    } else {
+        qDebug() << "glWidget is not initialized!";
+    }
+}
+
+void MainWindow::useNacaExample(){
+    //default naca setting with filename 6412.
+    ui->textFileName->setText("naca-6412");
+    ui->comboFileType->setCurrentIndex(1);
 }
 
 void MainWindow::handleDeleteButton()
@@ -108,6 +126,18 @@ void MainWindow::handleDeleteButton()
         }
     }
 }
+
+void MainWindow::clearRefinement(){
+    vector<float> floatValues;
+    floatValues.push_back(0.0f);
+    if (glWidget) {  // Ensure glWidget is valid
+        glWidget->setRefinement(floatValues);
+        glWidget->update();  // Redraw or update the widget
+    } else {
+        qDebug() << "glWidget is not initialized!";
+    }
+}
+
 void MainWindow::drawRefinement(const QString &itemText){
     QStringList items = itemText.split(',');
     vector<float> floatValues;
@@ -115,7 +145,6 @@ void MainWindow::drawRefinement(const QString &itemText){
     for (const QString &item : items) {
         // Trim spaces from each item, in case there are any
         QString trimmedItem = item.trimmed();
-
         // Convert the trimmed item to a float
         bool ok;
         float value = trimmedItem.toFloat(&ok);
@@ -173,7 +202,13 @@ void MainWindow::onRunAndSaveBtnClicked(){
 // run action on the menu bar
 void MainWindow::process(){
     // need to add the input module with the process module, otherwise some config will not be correct?
+    if(ui->textFileName->text().isEmpty()){
+        QMessageBox::information(this,"WARNING","No input file detected");
+        return;
+    }
     nekMeshObjectPtr->addInputModule(ui->textFileName->text().toStdString());
+
+    bool hasLoadOctree = false;
     // 遍历布局中的所有项
     for (int i = 0; i < ui->VLProcessPanel->count(); ++i) {
         QLayoutItem* item = ui->VLProcessPanel->itemAt(i);
@@ -182,11 +217,20 @@ void MainWindow::process(){
             if (widget && qobject_cast<CustomButton*>(widget)) {
                 CustomButton* customButton = qobject_cast<CustomButton*>(widget);
                 map<string,string> values = customButton->getConfig();
+                if(values["moduleType"]=="loadoctree"){
+                    hasLoadOctree = true;
+                }
                 nekMeshObjectPtr->addProcessModule(values);
             }
         }
     }
-
+    int index = ui->comboFileType->currentIndex();
+    if(index==1 && ui->VLProcessPanel->count()!=0){// it is a CAD and at least one process module, need to check has loadoctree module
+        if(!hasLoadOctree){
+            QMessageBox::information(this, "Warning", "Please configure the Load Octree module before processing");
+            return;
+        }
+    }
     nekMeshObjectPtr->process();
     QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
     ui->tableSource->setItem(0, 1, item);
@@ -202,6 +246,7 @@ void MainWindow::process(){
     }
     glWidget->setMesh(nekMeshObjectPtr->mesh);
     glWidget->update();
+    nekMeshObjectPtr = std::make_shared<NekMeshObject>(log);//释放旧资源
 }
 
 
@@ -368,15 +413,16 @@ void MainWindow::importCertainFile(char type)
 
     QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
     if (!filePath.isEmpty()) {
-        //update TreeView
-        model = new QStandardItemModel(ui->treeView);
-        model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("modules"));
-        QStandardItem* item = new QStandardItem("input");
-        model->appendRow(item);
-        QStandardItem* childItem = new QStandardItem(filePath);
-        item->appendRow(childItem);
-        ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
-        ui->treeView->setModel(model);
+        // //update TreeView
+        // model = new QStandardItemModel(ui->treeView);
+        // model->setHorizontalHeaderLabels(QStringList()<<QStringLiteral("modules"));
+        // QStandardItem* item = new QStandardItem("input");
+        // model->appendRow(item);
+        // QStandardItem* childItem = new QStandardItem(filePath);
+        // item->appendRow(childItem);
+        // ui->treeView->setStyle(QStyleFactory::create("windows")); // 设置虚线
+        // ui->treeView->setModel(model);
+        ui->textFileName->setText(filePath);
 
     }
 }
@@ -395,6 +441,7 @@ void MainWindow::openDirectory(){
         qDebug() << "No directory selected.";
     }
 }
+
 // import btn on the Source Panel
 void MainWindow::browseFile()
 {
@@ -411,10 +458,6 @@ void MainWindow::browseFile()
     QString filePath = QFileDialog::getOpenFileName(this, tr("Open File"), "", filter);
     if (!filePath.isEmpty()) {
         ui->textFileName->setText(filePath);
-        // nekMeshObjectPtr->addInputModule(filePath.toStdString());
-        // nekMeshObjectPtr->process();
-        // QTableWidgetItem* item = new QTableWidgetItem(QString::number(nekMeshObjectPtr->mesh->GetNumElements()));
-        // ui->tableSource->setItem(0, 1, item);
     }
 }
 
@@ -434,7 +477,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model); // 设置m_pMyTableView的数据模型为m_model
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -455,7 +497,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model); // 设置m_pMyTableView的数据模型为m_model
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -480,7 +521,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model); // 设置m_pMyTableView的数据模型为m_model
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -488,7 +528,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // 设置一条数据
             table_model->setItem(0, 0, new QStandardItem("moduleType"));
             table_model->setItem(0, 1, new QStandardItem("2dgenerator"));
-
             table_model->setItem(1, 0, new QStandardItem("makeBL"));
             table_model->setItem(1, 1, new QStandardItem("true"));
             table_model->setItem(2, 0, new QStandardItem("blcurves"));
@@ -509,7 +548,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model); // 设置m_pMyTableView的数据模型为m_model
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -532,7 +570,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model);
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -553,7 +590,6 @@ void MainWindow::onAddModuleBtnClicked(){
             // Init TableView
             table_model = new QStandardItemModel();
             ui->tableView->setModel(table_model);
-
             // 设置列字段名
             table_model->setColumnCount(2);
             table_model->setHeaderData(0,Qt::Horizontal, "param");
@@ -563,9 +599,7 @@ void MainWindow::onAddModuleBtnClicked(){
             table_model->setItem(0, 1, new QStandardItem("hosurface"));
             table_model->setItem(1, 0, new QStandardItem("surfopti"));
             table_model->setItem(1, 1, new QStandardItem("true"));
-
         }
-
         else if(selectedOption.compare("peralign", Qt::CaseSensitive) == 0 ){
             // Init TableView
             table_model = new QStandardItemModel();
@@ -596,10 +630,6 @@ void MainWindow::onAddModuleBtnClicked(){
             newItem->appendRow(childItem);
         }
     }
-
-
-
-
 }
 
 //old version
